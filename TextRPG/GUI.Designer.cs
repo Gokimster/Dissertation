@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.inputPanel = new System.Windows.Forms.Panel();
             this.input = new System.Windows.Forms.TextBox();
             this.inputLocationLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.output = new System.Windows.Forms.TextBox();
             this.mainPanel.SuspendLayout();
             this.inputPanel.SuspendLayout();
             this.SuspendLayout();
@@ -42,12 +43,13 @@
             this.mainPanel.AutoSize = true;
             this.mainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.mainPanel.Controls.Add(this.textBox1);
+            this.mainPanel.Controls.Add(this.output);
             this.mainPanel.Controls.Add(this.inputPanel);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(776, 460);
+            this.mainPanel.Size = new System.Drawing.Size(664, 466);
             this.mainPanel.TabIndex = 1;
             // 
             // inputPanel
@@ -58,9 +60,10 @@
             this.inputPanel.Controls.Add(this.inputLocationLabel);
             this.inputPanel.Controls.Add(this.input);
             this.inputPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inputPanel.Location = new System.Drawing.Point(0, 423);
+            this.inputPanel.Location = new System.Drawing.Point(0, 429);
+            this.inputPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.inputPanel.Name = "inputPanel";
-            this.inputPanel.Size = new System.Drawing.Size(776, 37);
+            this.inputPanel.Size = new System.Drawing.Size(664, 37);
             this.inputPanel.TabIndex = 2;
             // 
             // input
@@ -69,9 +72,10 @@
             this.input.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.input.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.input.ForeColor = System.Drawing.Color.White;
-            this.input.Location = new System.Drawing.Point(27, 6);
+            this.input.Location = new System.Drawing.Point(30, 6);
+            this.input.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(739, 26);
+            this.input.Size = new System.Drawing.Size(608, 26);
             this.input.TabIndex = 1;
             // 
             // inputLocationLabel
@@ -80,28 +84,46 @@
             this.inputLocationLabel.BackColor = System.Drawing.Color.Transparent;
             this.inputLocationLabel.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputLocationLabel.ForeColor = System.Drawing.Color.White;
-            this.inputLocationLabel.Location = new System.Drawing.Point(5, 6);
+            this.inputLocationLabel.Location = new System.Drawing.Point(4, 6);
+            this.inputLocationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inputLocationLabel.Name = "inputLocationLabel";
             this.inputLocationLabel.Size = new System.Drawing.Size(22, 25);
             this.inputLocationLabel.TabIndex = 2;
             this.inputLocationLabel.Text = ">";
             // 
-            // textBox1
+            // output
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(6, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(760, 20);
-            this.textBox1.TabIndex = 3;
+            this.output.BackColor = System.Drawing.Color.Black;
+            this.output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.output.Cursor = System.Windows.Forms.Cursors.Default;
+            this.output.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.output.Font = new System.Drawing.Font("Power Red and Green", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.output.ForeColor = System.Drawing.Color.White;
+            this.output.Location = new System.Drawing.Point(0, 0);
+            this.output.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.output.Multiline = true;
+            this.output.Name = "output";
+            this.output.ReadOnly = true;
+            this.output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.output.Size = new System.Drawing.Size(664, 429);
+            this.output.TabIndex = 3;
+            this.output.Text = "This\r\nid\r\na\r\ntest COME ON YOIOkashdfkjsgfiudsgfuidsgfuidsgfuidsgfuidsgfuidsgfuisd" +
+    "gfuidsgfsjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaammmmmmmmmmmmmmmmmmmmmm" +
+    "mmmmmmmmmmmmmmm\r\n\r\n\r\n";
             // 
             // GUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 460);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(664, 466);
             this.Controls.Add(this.mainPanel);
+            this.Font = new System.Drawing.Font("Power Red and Green", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "GUI";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "TextRPG";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.inputPanel.ResumeLayout(false);
@@ -116,7 +138,7 @@
         private System.Windows.Forms.TextBox input;
         private System.Windows.Forms.Panel inputPanel;
         private System.Windows.Forms.Label inputLocationLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox output;
     }
 }
 
