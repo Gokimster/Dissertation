@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.inputPanel = new System.Windows.Forms.Panel();
-            this.input = new System.Windows.Forms.TextBox();
-            this.inputLocationLabel = new System.Windows.Forms.Label();
             this.output = new System.Windows.Forms.TextBox();
+            this.inputPanel = new System.Windows.Forms.Panel();
+            this.inputLocationLabel = new System.Windows.Forms.Label();
+            this.input = new System.Windows.Forms.TextBox();
             this.mainPanel.SuspendLayout();
             this.inputPanel.SuspendLayout();
             this.SuspendLayout();
@@ -52,45 +52,6 @@
             this.mainPanel.Size = new System.Drawing.Size(664, 466);
             this.mainPanel.TabIndex = 1;
             // 
-            // inputPanel
-            // 
-            this.inputPanel.AutoSize = true;
-            this.inputPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.inputPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inputPanel.Controls.Add(this.inputLocationLabel);
-            this.inputPanel.Controls.Add(this.input);
-            this.inputPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inputPanel.Location = new System.Drawing.Point(0, 429);
-            this.inputPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.inputPanel.Name = "inputPanel";
-            this.inputPanel.Size = new System.Drawing.Size(664, 37);
-            this.inputPanel.TabIndex = 2;
-            // 
-            // input
-            // 
-            this.input.BackColor = System.Drawing.Color.Black;
-            this.input.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.input.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.input.ForeColor = System.Drawing.Color.White;
-            this.input.Location = new System.Drawing.Point(30, 6);
-            this.input.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(608, 26);
-            this.input.TabIndex = 1;
-            // 
-            // inputLocationLabel
-            // 
-            this.inputLocationLabel.AutoSize = true;
-            this.inputLocationLabel.BackColor = System.Drawing.Color.Transparent;
-            this.inputLocationLabel.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputLocationLabel.ForeColor = System.Drawing.Color.White;
-            this.inputLocationLabel.Location = new System.Drawing.Point(4, 6);
-            this.inputLocationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.inputLocationLabel.Name = "inputLocationLabel";
-            this.inputLocationLabel.Size = new System.Drawing.Size(22, 25);
-            this.inputLocationLabel.TabIndex = 2;
-            this.inputLocationLabel.Text = ">";
-            // 
             // output
             // 
             this.output.BackColor = System.Drawing.Color.Black;
@@ -107,9 +68,47 @@
             this.output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.output.Size = new System.Drawing.Size(664, 429);
             this.output.TabIndex = 3;
-            this.output.Text = "This\r\nid\r\na\r\ntest COME ON YOIOkashdfkjsgfiudsgfuidsgfuidsgfuidsgfuidsgfuidsgfuisd" +
-    "gfuidsgfsjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaammmmmmmmmmmmmmmmmmmmmm" +
-    "mmmmmmmmmmmmmmm\r\n\r\n\r\n";
+            this.output.Text = "\r\n\r\n\r\n";
+            // 
+            // inputPanel
+            // 
+            this.inputPanel.AutoSize = true;
+            this.inputPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.inputPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputPanel.Controls.Add(this.inputLocationLabel);
+            this.inputPanel.Controls.Add(this.input);
+            this.inputPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.inputPanel.Location = new System.Drawing.Point(0, 429);
+            this.inputPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.inputPanel.Name = "inputPanel";
+            this.inputPanel.Size = new System.Drawing.Size(664, 37);
+            this.inputPanel.TabIndex = 2;
+            // 
+            // inputLocationLabel
+            // 
+            this.inputLocationLabel.AutoSize = true;
+            this.inputLocationLabel.BackColor = System.Drawing.Color.Transparent;
+            this.inputLocationLabel.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputLocationLabel.ForeColor = System.Drawing.Color.White;
+            this.inputLocationLabel.Location = new System.Drawing.Point(4, 6);
+            this.inputLocationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.inputLocationLabel.Name = "inputLocationLabel";
+            this.inputLocationLabel.Size = new System.Drawing.Size(22, 25);
+            this.inputLocationLabel.TabIndex = 2;
+            this.inputLocationLabel.Text = ">";
+            // 
+            // input
+            // 
+            this.input.BackColor = System.Drawing.Color.Black;
+            this.input.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.input.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.input.ForeColor = System.Drawing.Color.White;
+            this.input.Location = new System.Drawing.Point(30, 6);
+            this.input.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.input.Name = "input";
+            this.input.Size = new System.Drawing.Size(608, 26);
+            this.input.TabIndex = 1;
+            this.input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
             // 
             // GUI
             // 

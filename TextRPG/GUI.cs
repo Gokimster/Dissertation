@@ -16,5 +16,17 @@ namespace TextRPG
         {
             InitializeComponent();
         }
+
+        private void input_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                output.AppendText(">" + input.Text + Environment.NewLine);
+                input.Clear();
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
