@@ -68,7 +68,6 @@
             this.output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.output.Size = new System.Drawing.Size(664, 429);
             this.output.TabIndex = 3;
-            this.output.Text = "\r\n\r\n\r\n";
             // 
             // inputPanel
             // 
