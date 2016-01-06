@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace TextRPG
@@ -11,8 +12,8 @@ namespace TextRPG
         }
 
         /// <summary>
-        /// Handles pressing Enter while in input textbox
-        /// add the input to the output
+        /// Handles pressing Enter while in input textbox;
+        /// add the input to the output;
         /// clear input
         /// </summary>
         /// <param name="sender"></param>
@@ -21,7 +22,12 @@ namespace TextRPG
         {
             if (e.KeyCode == Keys.Enter)
             {
-                appendToOutput(">" + input.Text);
+                Grammar g = new Grammar();
+                appendToOutput(input.Text, true);
+                if (!g.parse(input.Text))
+                {
+                    appendToOutput("Invalid Command");
+                }
                 input.Clear();
 
                 e.Handled = true;
@@ -33,9 +39,21 @@ namespace TextRPG
         /// append a string to the output textbox and add a new line after
         /// </summary>
         /// <param name="s"></param>
-        public void appendToOutput(String s)
+        public void appendToOutput(String s, bool fromUser = false)
         {
-            output.AppendText(s + Environment.NewLine);
+            if (fromUser)
+            {
+                output.SelectionStart = output.TextLength;
+                output.SelectionLength = 0;
+
+                output.SelectionColor = Color.LightSteelBlue;
+                output.AppendText(">" + s + Environment.NewLine);
+                output.SelectionColor = output.ForeColor;
+            }
+            else
+            {
+                output.AppendText(s + Environment.NewLine);
+            }
         }
 
         /// <summary>

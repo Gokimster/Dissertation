@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.output = new System.Windows.Forms.TextBox();
+            this.output = new System.Windows.Forms.RichTextBox();
             this.inputPanel = new System.Windows.Forms.Panel();
             this.inputLocationLabel = new System.Windows.Forms.Label();
             this.input = new System.Windows.Forms.TextBox();
@@ -65,7 +65,7 @@
             this.output.Multiline = true;
             this.output.Name = "output";
             this.output.ReadOnly = true;
-            this.output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.output.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.output.Size = new System.Drawing.Size(664, 429);
             this.output.TabIndex = 3;
             // 
@@ -136,7 +136,7 @@
         private System.Windows.Forms.TextBox input;
         private System.Windows.Forms.Panel inputPanel;
         private System.Windows.Forms.Label inputLocationLabel;
-        private System.Windows.Forms.TextBox output;
+        private System.Windows.Forms.RichTextBox output;
     }
 }
 
