@@ -6,9 +6,12 @@ namespace TextRPG
 {
     public partial class GUI : Form
     {
+        AreaManager areaMgr;
         public GUI()
         {
             InitializeComponent();
+            areaMgr = new AreaManager();
+
         }
 
         /// <summary>
@@ -39,6 +42,7 @@ namespace TextRPG
         /// append a string to the output textbox and add a new line after
         /// </summary>
         /// <param name="s"></param>
+        /// <param name="fromUser"></param>
         public void appendToOutput(String s, bool fromUser = false)
         {
             if (fromUser)

@@ -25,10 +25,11 @@ namespace TextRPG
                 {
                     foreach (var connection in area.Element("connections").Elements())
                     {
-                        a.addConnection(connection.Element("connection").Value, Int32.Parse(connection.Element("areaId").Value));
+                        a.addConnection(connection.Element("con").Value, Int32.Parse(connection.Element("area").Value));
                     }
                 }
                 a.description = area.Element("description").Value;
+                a.name = area.Element("name").Value;
                 areas.Add(Int32.Parse(area.Element("id").Value), a);
             }
         }
@@ -42,7 +43,7 @@ namespace TextRPG
 
         private void addAreaToXML(int id, Area a)
         {
-            xElem.Add(new XElement("area", new XElement("id", id), new XElement("description", a.description), new XElement("connections")));
+            xElem.Add(new XElement("area", new XElement("id", id), new XElement("description", a.description), new XElement("name", a.name), new XElement("connections")));
         }
 
         private void addConnectionToAreaInXML(int areaId, string connection, int connectingAreaId)

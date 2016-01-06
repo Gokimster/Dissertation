@@ -7,8 +7,11 @@ namespace TextRPG
         Dictionary<AreaConnection, int> connections;
         public enum AreaConnection { N, S, E, W };
         public string description { get; set; }
+        public string name { get; set; }
+
         public Area()
         {
+            connections = new Dictionary<AreaConnection, int>();
         }
 
         public Area(string description)
