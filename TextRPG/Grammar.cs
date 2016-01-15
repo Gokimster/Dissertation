@@ -57,9 +57,12 @@ namespace TextRPG
 
         private void doMove(ParseTreeNode n)
         {
-            if (n.ToString() == "moveCommand")
+            if (n.Term.Name == "moveCommand")
             {
-                Debug.WriteLine("HEY MOVE!");
+                if (AreaManager.Instance.changeCurrentArea(n.ChildNodes[1].ChildNodes[0].Term.Name))
+                {
+                    Debug.WriteLine("Moved");
+                }
             }
         }
 

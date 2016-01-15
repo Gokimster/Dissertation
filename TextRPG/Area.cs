@@ -25,6 +25,16 @@ namespace TextRPG
             connections.Add(ac, connectingAreaId);
         }
 
+        public int getAreaIdAt(string connection)
+        {
+            AreaConnection con = getConnectionFromString(connection);
+            if (connections.ContainsKey(con))
+            {
+                return connections[con];
+            }
+            return -1;
+        }
+
         private AreaConnection getConnectionFromString(string s)
         {
             switch(s)

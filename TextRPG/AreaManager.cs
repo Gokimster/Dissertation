@@ -9,9 +9,23 @@ namespace TextRPG
     {
         private Dictionary<int, Area> areas;
         private XElement xElem;
+        private Area currentArea;
+        public static readonly AreaManager Instance = new AreaManager();
         public AreaManager()
         {
             loadAreas();
+            currentArea = areas.Values.First();
+        }
+
+        public bool changeCurrentArea(string direction)
+        {
+            int areaId = currentArea.getAreaIdAt(direction);
+            if(areaId == -1)
+            {
+                return false;
+            }
+            currentArea = areas[areaId];
+            return true;
         }
 
         private void loadAreas()
