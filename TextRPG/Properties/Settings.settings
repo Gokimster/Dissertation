@@ -5,5 +5,8 @@
     <Setting Name="areaFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">areas.xml</Value>
     </Setting>
+    <Setting Name="inventoryFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">inventory.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -31,5 +31,17 @@ namespace TextRPG.Properties {
                 return ((string)(this["areaFile"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("inventory.xml")]
+        public string inventoryFile {
+            get {
+                return ((string)(this["inventoryFile"]));
+            }
+            set {
+                this["inventoryFile"] = value;
+            }
+        }
     }
 }

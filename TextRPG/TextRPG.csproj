@@ -58,6 +58,8 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Grammar.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="PersistenceMgr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

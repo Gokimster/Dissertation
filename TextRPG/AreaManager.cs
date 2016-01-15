@@ -7,8 +7,8 @@ namespace TextRPG
 {
     public class AreaManager
     {
-        Dictionary<int, Area> areas;
-        XElement xElem;
+        private Dictionary<int, Area> areas;
+        private XElement xElem;
         public AreaManager()
         {
             loadAreas();

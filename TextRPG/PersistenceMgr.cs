@@ -32,7 +32,7 @@ namespace TextRPG
             {
                 xmlElem = XElement.Load(name);
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException)
             {
                 createXMLDoc(name, mainElemName);
                 xmlElem = XElement.Load(name);

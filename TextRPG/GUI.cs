@@ -23,6 +23,7 @@ namespace TextRPG
         /// <param name="e"></param>
         private void input_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Enter)
             {
                 Grammar g = new Grammar();
