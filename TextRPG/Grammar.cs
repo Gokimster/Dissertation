@@ -46,12 +46,20 @@ namespace TextRPG
         {
             for(int i = 0; i < level; i++)
             {
-                Debug.Write("");
+                Debug.Write(" ");
             }
             Debug.WriteLine(n);
             foreach(ParseTreeNode child in n.ChildNodes)
             {
                 displayTree(child, level + 1);
+            }
+        }
+
+        private void doMove(ParseTreeNode n)
+        {
+            if (n.ToString() == "moveCommand")
+            {
+                Debug.WriteLine("HEY MOVE!");
             }
         }
 
@@ -64,11 +72,11 @@ namespace TextRPG
             Parser parser = new Parser(language);
             ParseTree parseTree = parser.Parse(s);
             ParseTreeNode root = parseTree.Root;
-
             //check if input is valid
             if(root!=null)
             {
                 displayTree(root, 0);
+                doMove(root);
                 return true;
             }
             else
