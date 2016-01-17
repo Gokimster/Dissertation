@@ -25,15 +25,28 @@ namespace TextRPG
             NonTerminal moveOp = new NonTerminal("moveOp");
             NonTerminal moveDir = new NonTerminal("moveDirection");
 
+            //help commands
+            NonTerminal helpCommand = new NonTerminal("helpCommand");
+            NonTerminal inventoryCommand = new NonTerminal("inventoryCommand");
+            NonTerminal inventoryOp = new NonTerminal("inventoryOp");
+            NonTerminal inventoryAlias = new NonTerminal("inventoryAlias");
+
             NonTerminal value = new NonTerminal("value");
 
             value.Rule = number | STRING;
-            command = moveCommand;
+            command.Rule = moveCommand | helpCommand;
 
             //move
             moveOp.Rule = ToTerm("go") | "head";
             moveDir.Rule = ToTerm("north") | "south" | "east" | "west" | "N" | "S" | "E" | "W";
             moveCommand.Rule = moveOp + moveDir;
+
+            //help commands
+            inventoryOp.Rule = ToTerm("show") | "display";
+            inventoryAlias.Rule = ToTerm("inventory") | "items";
+            inventoryCommand.Rule = inventoryAlias | inventoryOp + inventoryAlias;
+            //TO DO: add rule to help command
+            helpCommand.Rule = inventoryCommand;
 
             this.Root = command;
         }
@@ -55,13 +68,23 @@ namespace TextRPG
             }
         }
 
-        private void doMove(ParseTreeNode n)
+        private void doCommand(ParseTreeNode n)
         {
-            if (n.Term.Name == "moveCommand")
+            var mainNode = n.ChildNodes[0];
+            if (mainNode.Term.Name == "moveCommand")
             {
-                if (AreaManager.Instance.changeCurrentArea(n.ChildNodes[1].ChildNodes[0].Term.Name))
+                if (GameManager.changeCurrentArea(n.ChildNodes[1].ChildNodes[0].Term.Name))
                 {
                     Debug.WriteLine("Moved");
+                }
+            }
+
+            if(mainNode.Term.Name == "helpCommand")
+            {
+                if(mainNode.ChildNodes[0].Term.Name == "inventoryCommand")
+                {
+                    Debug.WriteLine("ShowInventory");
+                    GameManager.showPlayerInventory();
                 }
             }
         }
@@ -79,7 +102,7 @@ namespace TextRPG
             if(root!=null)
             {
                 displayTree(root, 0);
-                doMove(root);
+                doCommand(root);
                 return true;
             }
             else

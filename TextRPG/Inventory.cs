@@ -1,25 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace TextRPG
 {
     public class Inventory
     {
-        private List<Item> items;
-        private XElement xElem;
+        protected List<Item> items;
+        protected XElement xElem;
 
         public Inventory()
-        { 
+        {
+            items = new List<Item>();
         }
 
-        private void loadInventory()
+        protected void loadInventory(XElement elem)
         {
-            xElem = PersistenceMgr.initXML(Properties.Settings.Default.inventoryFile, "inventory");
-            items = new List<Item>();
-            foreach (var item in xElem.Elements())
+            foreach(var item in elem.Element("items").Elements())
             {
-                Item i = new Item(item.Element("name").Value, item.Element("description").Value);
-                items.Add(i);
+                items.Add(ItemManager.Instance.getItem(Int32.Parse(item.Element("id").Value)));
             }
         }
 
@@ -40,12 +39,14 @@ namespace TextRPG
             removeItemFromXML(i);
         }
 
+        //If you remove item from XML in areas then you will not be able to restore the items in rooms
+        //think of having a bool that says if the item has been picked up, then you can reset it when reseting game, or on new game
         private void removeItemFromXML(Item i)
         {
 
         }
 
-        public string showListOfitems()
+        public string getListOfitems()
         {
             string listOfItems = "";
             if(items.Count <= 0)
@@ -54,11 +55,14 @@ namespace TextRPG
             }
             foreach (Item i in items)
             {
-                if(listOfItems == "")
+                if (listOfItems == "")
                 {
                     listOfItems = listOfItems + i.name;
                 }
-                listOfItems = listOfItems +", " +  i.name;
+                else
+                {
+                    listOfItems = listOfItems + ", " + i.name;
+                }
             }
             return listOfItems;
         }

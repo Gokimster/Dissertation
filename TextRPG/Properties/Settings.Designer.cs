@@ -34,13 +34,25 @@ namespace TextRPG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("inventory.xml")]
-        public string inventoryFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("player.xml")]
+        public string playerFile {
             get {
-                return ((string)(this["inventoryFile"]));
+                return ((string)(this["playerFile"]));
             }
             set {
-                this["inventoryFile"] = value;
+                this["playerFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("items.xml")]
+        public string itemFile {
+            get {
+                return ((string)(this["itemFile"]));
+            }
+            set {
+                this["itemFile"] = value;
             }
         }
     }

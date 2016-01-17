@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TextRPG
+﻿namespace TextRPG
 {
     public static class GameManager
     {
-        public static void changeCurrentArea(string direction)
+        public static bool changeCurrentArea(string direction)
         {
-            AreaManager.Instance.changeCurrentArea(direction);
+            return AreaManager.Instance.changeCurrentArea(direction);
         }
 
         public static void showAreaDescription()
@@ -26,6 +20,11 @@ namespace TextRPG
         public static void noAreaInDirection(string direction)
         {
             GUI.Instance.appendToOutput("There is no Area in direction: " + direction);
+        }
+
+        public static void showPlayerInventory()
+        {
+            GUI.Instance.appendToOutput(PlayerInventory.Instance.getListOfitems());
         }
     }
 }

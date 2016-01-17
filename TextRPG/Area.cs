@@ -8,10 +8,12 @@ namespace TextRPG
         public enum AreaConnection { N, S, E, W };
         public string description { get; set; }
         public string name { get; set; }
+        private Inventory inventory;
 
         public Area()
         {
             connections = new Dictionary<AreaConnection, int>();
+            inventory = new Inventory();
         }
 
         public Area(string description)
@@ -57,11 +59,13 @@ namespace TextRPG
             switch(s)
             {
                 case "N":
-                case "north":  return AreaConnection.N;
+                case "north":   return AreaConnection.N;
                 case "S":
-                case "south":  return AreaConnection.S;
-                case "E": return AreaConnection.E;
-                case "W": return AreaConnection.W;
+                case "south":   return AreaConnection.S;
+                case "E":
+                case "east":    return AreaConnection.E;
+                case "W":
+                case "west":    return AreaConnection.W;
                 default: return AreaConnection.N;
             }
         }

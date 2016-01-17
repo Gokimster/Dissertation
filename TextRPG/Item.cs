@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TextRPG
+﻿namespace TextRPG
 {
     public class Item
     {
         public string description { get; set; }
         public string name { get; set; }
-        
+
+        public Item()
+        {
+
+        }
         public Item(string name)
         {
             this.name = name;

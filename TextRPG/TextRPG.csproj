@@ -61,6 +61,7 @@
     <Compile Include="Grammar.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemManager.cs" />
     <Compile Include="PersistenceMgr.cs" />
     <Compile Include="PlayerInventory.cs" />
     <Compile Include="Program.cs" />
