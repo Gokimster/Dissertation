@@ -6,12 +6,10 @@ namespace TextRPG
 {
     public partial class GUI : Form
     {
-        AreaManager areaMgr;
+        public static readonly GUI Instance = new GUI();
         public GUI()
         {
             InitializeComponent();
-            areaMgr = new AreaManager();
-
         }
 
         /// <summary>

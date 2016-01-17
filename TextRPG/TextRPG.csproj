@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="AreaManager.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +62,7 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="PersistenceMgr.cs" />
+    <Compile Include="PlayerInventory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI.resx">

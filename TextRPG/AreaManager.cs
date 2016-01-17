@@ -9,7 +9,7 @@ namespace TextRPG
     {
         private Dictionary<int, Area> areas;
         private XElement xElem;
-        private Area currentArea;
+        public Area currentArea { set; get; }
         public static readonly AreaManager Instance = new AreaManager();
         public AreaManager()
         {
@@ -22,11 +22,33 @@ namespace TextRPG
             int areaId = currentArea.getAreaIdAt(direction);
             if(areaId == -1)
             {
+                GameManager.noAreaInDirection(direction);
                 return false;
             }
-            currentArea = areas[areaId];
+            setCurrentArea(areaId);
             return true;
         }
+
+        public void setCurrentArea(int areaId)
+        {
+            currentArea = areas[areaId];
+            GameManager.showFullAreaDescription();
+        }
+
+        public string getFullAreaDescription(Area a)
+        {
+            string full = a.getFullDescription();
+            full += "Connections: \n";
+            foreach(var con in a.connections)
+            {
+                full += con.Key.ToString() + ": " + areas[con.Value].name + "\n";
+            }
+            return full;
+        }
+
+        //============================
+        //XML Operations
+        //============================
 
         private void loadAreas()
         {

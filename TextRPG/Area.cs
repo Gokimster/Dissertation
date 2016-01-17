@@ -4,7 +4,7 @@ namespace TextRPG
 {
     public class Area
     {
-        Dictionary<AreaConnection, int> connections;
+        public Dictionary<AreaConnection, int> connections { get; }
         public enum AreaConnection { N, S, E, W };
         public string description { get; set; }
         public string name { get; set; }
@@ -17,6 +17,14 @@ namespace TextRPG
         public Area(string description)
         {
             this.description = description;
+        }
+
+        public string getFullDescription()
+        {
+            string full = name + "\n";
+            full += description + "\n";
+            //TO DO: Add Items
+            return full;
         }
 
         public void addConnection(string connection, int connectingAreaId)
@@ -35,12 +43,23 @@ namespace TextRPG
             return -1;
         }
 
+        public int getAreaIdAt(AreaConnection connection)
+        {
+            if (connections.ContainsKey(connection))
+            {
+                return connections[connection];
+            }
+            return -1;
+        }
+
         private AreaConnection getConnectionFromString(string s)
         {
             switch(s)
             {
-                case "N": return AreaConnection.N;
-                case "S": return AreaConnection.S;
+                case "N":
+                case "north":  return AreaConnection.N;
+                case "S":
+                case "south":  return AreaConnection.S;
                 case "E": return AreaConnection.E;
                 case "W": return AreaConnection.W;
                 default: return AreaConnection.N;

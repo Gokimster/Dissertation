@@ -12,8 +12,8 @@ namespace TextRPG
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI());
+            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(GUI.Instance);
         }
     }
 }
