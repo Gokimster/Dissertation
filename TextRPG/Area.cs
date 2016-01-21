@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace TextRPG
 {
@@ -21,10 +22,16 @@ namespace TextRPG
             this.description = description;
         }
 
+        public void loadAreaInventory(XElement elem)
+        {
+            inventory.loadInventory(elem);
+        }
+
         public string getFullDescription()
         {
             string full = name + "\n";
             full += description + "\n";
+            full += "Items: " + inventory.getListOfitems() + "\n";
             //TO DO: Add Items
             return full;
         }

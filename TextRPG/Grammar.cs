@@ -73,7 +73,7 @@ namespace TextRPG
             var mainNode = n.ChildNodes[0];
             if (mainNode.Term.Name == "moveCommand")
             {
-                if (GameManager.changeCurrentArea(n.ChildNodes[1].ChildNodes[0].Term.Name))
+                if (GameManager.changeCurrentArea(mainNode.ChildNodes[1].ChildNodes[0].Term.Name))
                 {
                     Debug.WriteLine("Moved");
                 }

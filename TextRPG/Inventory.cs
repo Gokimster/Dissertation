@@ -14,11 +14,14 @@ namespace TextRPG
             items = new List<Item>();
         }
 
-        protected void loadInventory(XElement elem)
+        public void loadInventory(XElement elem)
         {
-            foreach(var item in elem.Element("items").Elements())
+            if (elem.Element("items") != null)
             {
-                items.Add(ItemManager.Instance.getItem(Int32.Parse(item.Element("id").Value)));
+                foreach (var item in elem.Element("items").Elements())
+                {
+                    items.Add(ItemManager.Instance.getItem(Int32.Parse(item.Element("id").Value)));
+                }
             }
         }
 

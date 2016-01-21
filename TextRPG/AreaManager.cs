@@ -66,6 +66,7 @@ namespace TextRPG
                 }
                 a.description = area.Element("description").Value;
                 a.name = area.Element("name").Value;
+                a.loadAreaInventory(area);
                 areas.Add(Int32.Parse(area.Element("id").Value), a);
             }
         }
