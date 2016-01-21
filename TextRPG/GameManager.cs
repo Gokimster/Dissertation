@@ -26,5 +26,20 @@
         {
             GUI.Instance.appendToOutput(PlayerInventory.Instance.getListOfitems());
         }
+
+        public static void pickUpItem(string itemName)
+        {
+            Item i = AreaManager.Instance.getCurrAreaItemFromName(itemName);
+            if (i != null)
+            {
+                AreaManager.Instance.currentArea.removeItem(i);
+                PlayerInventory.Instance.addItem(i);
+                GUI.Instance.appendToOutput(i.name + " added to your inventory.");
+            }
+            else
+            {
+                GUI.Instance.appendToOutput("There is no such item here.");
+            }
+        }
     }
 }

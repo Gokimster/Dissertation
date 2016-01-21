@@ -61,6 +61,16 @@ namespace TextRPG
             return -1;
         }
 
+        public Item getItemFromName(string itemName)
+        {
+            return inventory.getItemFromName(itemName);
+        }
+
+        public void removeItem(Item i)
+        {
+            inventory.removeItem(i);
+        }
+
         private AreaConnection getConnectionFromString(string s)
         {
             switch(s)

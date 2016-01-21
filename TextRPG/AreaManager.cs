@@ -46,6 +46,11 @@ namespace TextRPG
             return full;
         }
 
+        public Item getCurrAreaItemFromName(string itemName)
+        {
+            return currentArea.getItemFromName(itemName);
+        }
+
         //============================
         //XML Operations
         //============================

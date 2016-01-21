@@ -25,21 +25,30 @@ namespace TextRPG
             NonTerminal moveOp = new NonTerminal("moveOp");
             NonTerminal moveDir = new NonTerminal("moveDirection");
 
+            //pick up item
+            NonTerminal pickUpCommand = new NonTerminal("pickUpCommand");
+            NonTerminal pickUpOp = new NonTerminal("pickUpOp");            
+
             //help commands
             NonTerminal helpCommand = new NonTerminal("helpCommand");
             NonTerminal inventoryCommand = new NonTerminal("inventoryCommand");
             NonTerminal inventoryOp = new NonTerminal("inventoryOp");
             NonTerminal inventoryAlias = new NonTerminal("inventoryAlias");
 
-            NonTerminal value = new NonTerminal("value");
+            NonTerminal name = new NonTerminal("name");
 
-            value.Rule = number | STRING;
-            command.Rule = moveCommand | helpCommand;
+            //TO-DO : Change so that it can have mutiple words in it
+            name.Rule = new IdentifierTerminal("identifier");
+            command.Rule = moveCommand | pickUpCommand | helpCommand;
 
             //move
             moveOp.Rule = ToTerm("go") | "head";
             moveDir.Rule = ToTerm("north") | "south" | "east" | "west" | "N" | "S" | "E" | "W";
             moveCommand.Rule = moveOp + moveDir;
+
+            //pick up item
+            pickUpOp.Rule = ToTerm("pick up") | "get" | "take";
+            pickUpCommand.Rule = pickUpOp +  name;
 
             //help commands
             inventoryOp.Rule = ToTerm("show") | "display";
@@ -73,10 +82,7 @@ namespace TextRPG
             var mainNode = n.ChildNodes[0];
             if (mainNode.Term.Name == "moveCommand")
             {
-                if (GameManager.changeCurrentArea(mainNode.ChildNodes[1].ChildNodes[0].Term.Name))
-                {
-                    Debug.WriteLine("Moved");
-                }
+                GameManager.changeCurrentArea(mainNode.ChildNodes[1].ChildNodes[0].Term.Name);
             }
 
             if(mainNode.Term.Name == "helpCommand")
@@ -86,6 +92,12 @@ namespace TextRPG
                     Debug.WriteLine("ShowInventory");
                     GameManager.showPlayerInventory();
                 }
+            }
+
+            if(mainNode.Term.Name == "pickUpCommand")
+            {
+                if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)
+                    GameManager.pickUpItem(mainNode.ChildNodes[1].ChildNodes[0].Token.ValueString);
             }
         }
 

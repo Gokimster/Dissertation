@@ -42,6 +42,18 @@ namespace TextRPG
             removeItemFromXML(i);
         }
 
+        public Item getItemFromName(string itemName)
+        {
+            foreach(Item i in items)
+            {
+                if (i.name.Equals(itemName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return i;
+                }
+            }
+            return null;
+        }
+
         //If you remove item from XML in areas then you will not be able to restore the items in rooms
         //think of having a bool that says if the item has been picked up, then you can reset it when reseting game, or on new game
         private void removeItemFromXML(Item i)
