@@ -25,6 +25,10 @@ namespace TextRPG
             NonTerminal moveOp = new NonTerminal("moveOp");
             NonTerminal moveDir = new NonTerminal("moveDirection");
 
+            //attack
+            NonTerminal attackCommand = new NonTerminal("moveCommand");
+            NonTerminal attackOp = new NonTerminal("moveOp");
+
             //pick up item
             NonTerminal pickUpCommand = new NonTerminal("pickUpCommand");
             NonTerminal pickUpOp = new NonTerminal("pickUpOp");            
@@ -36,10 +40,12 @@ namespace TextRPG
             NonTerminal inventoryAlias = new NonTerminal("inventoryAlias");
 
             NonTerminal name = new NonTerminal("name");
+            NonTerminal nameString = new NonTerminal("nameString");
 
             //TO-DO : Change so that it can have mutiple words in it
             name.Rule = new IdentifierTerminal("identifier");
-            command.Rule = moveCommand | pickUpCommand | helpCommand;
+            nameString.Rule = name | name + nameString;
+            command.Rule = moveCommand | pickUpCommand | helpCommand | attackCommand;
 
             //move
             moveOp.Rule = ToTerm("go") | "head";
@@ -48,7 +54,11 @@ namespace TextRPG
 
             //pick up item
             pickUpOp.Rule = ToTerm("pick up") | "get" | "take";
-            pickUpCommand.Rule = pickUpOp +  name;
+            pickUpCommand.Rule = pickUpOp +  nameString;
+
+            //attack
+            attackOp.Rule = ToTerm("attack") | "engage" | "fight";
+            attackCommand.Rule = attackOp + nameString;
 
             //help commands
             inventoryOp.Rule = ToTerm("show") | "display";
@@ -97,8 +107,23 @@ namespace TextRPG
             if(mainNode.Term.Name == "pickUpCommand")
             {
                 if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)
-                    GameManager.pickUpItem(mainNode.ChildNodes[1].ChildNodes[0].Token.ValueString);
+                {
+                    string s = getStringFromNameString(mainNode.ChildNodes[1]);
+                    GameManager.pickUpItem(s);
+                }
+                    
             }
+        }
+
+        private string getStringFromNameString(ParseTreeNode n, string s = "" )
+        {
+            s += n.ChildNodes[0].ChildNodes[0].Token.Value;
+            if(n.ChildNodes.Count > 1)
+            {
+                s += " ";
+                return getStringFromNameString(n.ChildNodes[1], s);
+            }
+            return s;
         }
 
         /// <summary>

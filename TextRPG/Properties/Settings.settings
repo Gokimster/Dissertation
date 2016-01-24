@@ -11,5 +11,8 @@
     <Setting Name="itemFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">items.xml</Value>
     </Setting>
+    <Setting Name="npcFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">npcs.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

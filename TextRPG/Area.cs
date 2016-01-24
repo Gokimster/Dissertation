@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace TextRPG
@@ -6,6 +7,7 @@ namespace TextRPG
     public class Area
     {
         public Dictionary<AreaConnection, int> connections { get; }
+        public List<Character> npcs;
         public enum AreaConnection { N, S, E, W };
         public string description { get; set; }
         public string name { get; set; }
@@ -15,6 +17,7 @@ namespace TextRPG
         {
             connections = new Dictionary<AreaConnection, int>();
             inventory = new Inventory();
+            npcs = new List<Character>();
         }
 
         public Area(string description)
@@ -32,14 +35,58 @@ namespace TextRPG
             string full = name + "\n";
             full += description + "\n";
             full += "Items: " + inventory.getListOfitems() + "\n";
-            //TO DO: Add Items
+            full += getNpcDescriptionList();
             return full;
+        }
+
+        public string getNpcDescriptionList()
+        {
+            string npcDesc = "Npcs: ";
+            string enemiesDesc = "Enemies: ";
+            bool containsEnemy = false;
+            bool containsNpc = false;
+            foreach (Character c in npcs)
+            {
+                if(c is Enemy)
+                {
+                    enemiesDesc += c.name + " ";
+                    containsEnemy = true;
+                }
+                else
+                {
+                    npcDesc += c.name + " ";
+                    containsNpc = true;
+                }
+            }
+            if(!containsNpc)
+            {
+                npcDesc += "None";
+            }
+
+            if (!containsEnemy)
+            {
+                enemiesDesc += "None";
+            }
+            return npcDesc + "\n" + enemiesDesc + "\n";
         }
 
         public void addConnection(string connection, int connectingAreaId)
         {
             AreaConnection ac = getConnectionFromString(connection);
             connections.Add(ac, connectingAreaId);
+        }
+
+        public void addNpc(int id)
+        {
+            Character c = GameManager.getNpc(id);
+            if (c != null)
+            {
+                npcs.Add(c);
+            }
+            else
+            {
+                Console.WriteLine("Couldn't add Enemy to room");
+            }
         }
 
         public int getAreaIdAt(string connection)

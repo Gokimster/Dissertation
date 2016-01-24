@@ -1,4 +1,7 @@
-﻿namespace TextRPG
+﻿using System;
+using System.Xml.Linq;
+
+namespace TextRPG
 {
     public static class GameManager
     {
@@ -40,6 +43,25 @@
             {
                 GUI.Instance.appendToOutput("There is no such item here.");
             }
+        }
+
+        public static Character getNpc(int id)
+        {
+            XElement xElem = PersistenceMgr.initXML(Properties.Settings.Default.npcFile, "npcs");
+            Character c = null;
+            foreach (var npc in xElem.Elements())
+            {
+                if (id == Int32.Parse(npc.Element("id").Value))
+                {
+                    if (Int32.Parse(npc.Element("isEnemy").Value) == 0)
+                        c = new Character(float.Parse(npc.Element("id").Value), npc.Element("name").Value);
+                    else
+                    {
+                        c = new Enemy(float.Parse(npc.Element("id").Value), npc.Element("name").Value);
+                    }
+                }
+            }
+            return c;
         }
     }
 }

@@ -55,5 +55,17 @@ namespace TextRPG.Properties {
                 this["itemFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("npcs.xml")]
+        public string npcFile {
+            get {
+                return ((string)(this["npcFile"]));
+            }
+            set {
+                this["npcFile"] = value;
+            }
+        }
     }
 }

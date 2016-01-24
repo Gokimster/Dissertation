@@ -69,6 +69,15 @@ namespace TextRPG
                         a.addConnection(connection.Element("con").Value, Int32.Parse(connection.Element("area").Value));
                     }
                 }
+
+                if (area.Element("npcs") != null)
+                {
+                    foreach (var npc in area.Element("npcs").Elements())
+                    {
+                        a.addNpc(Int32.Parse(npc.Element("id").Value));
+                    }
+                }
+
                 a.description = area.Element("description").Value;
                 a.name = area.Element("name").Value;
                 a.loadAreaInventory(area);
