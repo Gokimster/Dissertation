@@ -13,7 +13,7 @@ namespace TextRPG
 
         private void loadInventory()
         {
-            xElem = PersistenceMgr.initXML(Properties.Settings.Default.playerFile, "player");
+            xElem = PersistenceManager.initXML(Properties.Settings.Default.playerFile, "player");
             base.loadInventory(xElem.Element("player"));
         }
     }

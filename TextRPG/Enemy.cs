@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace TextRPG
 {
-    public class Enemy:Character
+    public class Enemy:CombatCharacter
     {
-        public Enemy(float maxHealth, string name): base(maxHealth, name)
+        public Enemy(float maxHealth, string name, float dmg): base(maxHealth, name, dmg)
         {
-
         }
 
-        public Enemy(float maxHealth, float currHealth, string name) : base(maxHealth, currHealth, name)
+        public Enemy(float maxHealth, float currHealth, string name, float dmg) : base(maxHealth, currHealth, name, dmg)
         {
 
         }

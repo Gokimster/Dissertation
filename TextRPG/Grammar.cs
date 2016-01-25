@@ -26,8 +26,8 @@ namespace TextRPG
             NonTerminal moveDir = new NonTerminal("moveDirection");
 
             //attack
-            NonTerminal attackCommand = new NonTerminal("moveCommand");
-            NonTerminal attackOp = new NonTerminal("moveOp");
+            NonTerminal attackCommand = new NonTerminal("attackCommand");
+            NonTerminal attackOp = new NonTerminal("attackOp");
 
             //pick up item
             NonTerminal pickUpCommand = new NonTerminal("pickUpCommand");
@@ -35,9 +35,13 @@ namespace TextRPG
 
             //help commands
             NonTerminal helpCommand = new NonTerminal("helpCommand");
+
             NonTerminal inventoryCommand = new NonTerminal("inventoryCommand");
             NonTerminal inventoryOp = new NonTerminal("inventoryOp");
             NonTerminal inventoryAlias = new NonTerminal("inventoryAlias");
+
+            NonTerminal inspectCommand = new NonTerminal("inspectCommand");
+            NonTerminal inspectOp = new NonTerminal("inspectOp");
 
             NonTerminal name = new NonTerminal("name");
             NonTerminal nameString = new NonTerminal("nameString");
@@ -64,8 +68,11 @@ namespace TextRPG
             inventoryOp.Rule = ToTerm("show") | "display";
             inventoryAlias.Rule = ToTerm("inventory") | "items";
             inventoryCommand.Rule = inventoryAlias | inventoryOp + inventoryAlias;
+
+            inspectOp.Rule = ToTerm("inspect") | "view" | "show";
+            inspectCommand.Rule = inspectOp + nameString;
             //TO DO: add rule to help command
-            helpCommand.Rule = inventoryCommand;
+            helpCommand.Rule = inventoryCommand | inspectCommand;
 
             this.Root = command;
         }
@@ -102,6 +109,14 @@ namespace TextRPG
                     Debug.WriteLine("ShowInventory");
                     GameManager.showPlayerInventory();
                 }
+                else
+                {
+                    if (mainNode.ChildNodes[0].Term.Name == "inspectCommand")
+                    {
+                        string s = getStringFromNameString(mainNode.ChildNodes[0].ChildNodes[1]);
+                        GameManager.inspect(s);
+                    }
+                }
             }
 
             if(mainNode.Term.Name == "pickUpCommand")
@@ -111,7 +126,14 @@ namespace TextRPG
                     string s = getStringFromNameString(mainNode.ChildNodes[1]);
                     GameManager.pickUpItem(s);
                 }
-                    
+            }
+            if (mainNode.Term.Name == "attackCommand")
+            {
+                if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)
+                {
+                    string s = getStringFromNameString(mainNode.ChildNodes[1]);
+                    GameManager.doCombat(s);
+                }
             }
         }
 

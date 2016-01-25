@@ -51,13 +51,18 @@ namespace TextRPG
             return currentArea.getItemFromName(itemName);
         }
 
+        public Enemy getCurrAreaEnemyFromName(string enemyName)
+        {
+            return currentArea.getEnemyFromName(enemyName);
+        }
+
         //============================
         //XML Operations
         //============================
 
         private void loadAreas()
         {
-            xElem = PersistenceMgr.initXML(Properties.Settings.Default.areaFile, "areas");
+            xElem = PersistenceManager.initXML(Properties.Settings.Default.areaFile, "areas");
             areas = new Dictionary<int, Area>();
             foreach (var area in xElem.Elements())
             {

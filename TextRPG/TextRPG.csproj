@@ -52,7 +52,9 @@
     <Compile Include="Area.cs" />
     <Compile Include="AreaManager.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="CombatCharacter.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="CombatManager.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
@@ -64,7 +66,7 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemManager.cs" />
-    <Compile Include="PersistenceMgr.cs" />
+    <Compile Include="PersistenceManager.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerInventory.cs" />
     <Compile Include="Program.cs" />

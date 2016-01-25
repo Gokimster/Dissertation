@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace TextRPG
 {
-    public class Player:Character
+    public class Player:CombatCharacter
     {
-        public Player(float maxHealth, string name):base(maxHealth, name)
-        {
+        public static readonly Player Instance = new Player();
 
+        public Player()
+        {
+            loadCharacter();
         }
 
-        public Player(float maxHealth) : base(maxHealth, "player")
+        private void loadCharacter()
         {
-
+            XElement xElem = PersistenceManager.initXML(Properties.Settings.Default.playerFile, "players");
+            var player = xElem.Elements().First();
+            maxHealth = float.Parse(player.Element("maxHealth").Value);
+            currHealth = maxHealth;
+            dmg = float.Parse(player.Element("dmg").Value);
+            name = player.Element("name").Value;
         }
-
     }
 }

@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace TextRPG
 {
-    public static class PersistenceMgr
+    public static class PersistenceManager
     {
 
         //----------------------------------------//

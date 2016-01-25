@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Xml.Linq;
 
 namespace TextRPG
@@ -47,21 +48,42 @@ namespace TextRPG
 
         public static Character getNpc(int id)
         {
-            XElement xElem = PersistenceMgr.initXML(Properties.Settings.Default.npcFile, "npcs");
+            XElement xElem = PersistenceManager.initXML(Properties.Settings.Default.npcFile, "npcs");
             Character c = null;
             foreach (var npc in xElem.Elements())
             {
                 if (id == Int32.Parse(npc.Element("id").Value))
                 {
                     if (Int32.Parse(npc.Element("isEnemy").Value) == 0)
-                        c = new Character(float.Parse(npc.Element("id").Value), npc.Element("name").Value);
+                    {
+                        c = new Character(npc.Element("name").Value);
+                    }
                     else
                     {
-                        c = new Enemy(float.Parse(npc.Element("id").Value), npc.Element("name").Value);
+                        c = new Enemy(float.Parse(npc.Element("maxHealth").Value), npc.Element("name").Value, float.Parse(npc.Element("dmg").Value));
                     }
                 }
             }
             return c;
+        }
+
+        public static void inspect(string s)
+        {
+            Item i = AreaManager.Instance.getCurrAreaItemFromName(s);
+            if(i != null)
+            {
+                GUI.Instance.appendToOutput(i.description);
+            }
+        }
+
+        public static void doCombat(string s)
+        {
+            Enemy e = AreaManager.Instance.getCurrAreaEnemyFromName(s);
+            if(e != null)
+            {
+                CombatManager.doCombat(e);
+                GUI.Instance.appendToOutput("Combat ended with "+ e.name + " - Player Health:" + Player.Instance.currHealth + "; Enemy Health: " + e.currHealth);
+            }
         }
     }
 }

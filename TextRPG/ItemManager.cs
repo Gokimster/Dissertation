@@ -18,7 +18,7 @@ namespace TextRPG
 
         private void loadAreas()
         {
-            xElem = PersistenceMgr.initXML(Properties.Settings.Default.itemFile, "items");
+            xElem = PersistenceManager.initXML(Properties.Settings.Default.itemFile, "items");
             items = new Dictionary<int, Item>();
             foreach (var item in xElem.Elements())
             {

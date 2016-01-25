@@ -89,6 +89,18 @@ namespace TextRPG
             }
         }
 
+        public Enemy getEnemyFromName(string name)
+        {
+            foreach (Character c in npcs)
+            {
+                if (c.name.Equals(name, StringComparison.InvariantCultureIgnoreCase) && (c is Enemy))
+                {
+                    return (Enemy)c;
+                }
+            }
+            return null;
+        }
+
         public int getAreaIdAt(string connection)
         {
             AreaConnection con = getConnectionFromString(connection);
