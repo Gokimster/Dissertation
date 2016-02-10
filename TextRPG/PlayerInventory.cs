@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TextRPG
+﻿namespace TextRPG
 {
     public class PlayerInventory: Inventory
     {
