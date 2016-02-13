@@ -57,6 +57,8 @@ namespace TextRPG
             {
                 output.AppendText(s + Environment.NewLine);
             }
+            output.SelectionStart = output.Text.Length;
+            output.ScrollToCaret();
         }
 
         /// <summary>
