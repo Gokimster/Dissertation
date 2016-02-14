@@ -10,6 +10,8 @@ namespace TextRPG
         {
             Lua lua = new Lua();    
             lua.LoadCLRPackage();
+            lua.DoString(@" import ('TextRPG', 'TextRPG') 
+               import ('System') ");
             try {
                 var x = lua.DoString(luaCommand);
                 GUI.Instance.appendToOutput(x.ToString());

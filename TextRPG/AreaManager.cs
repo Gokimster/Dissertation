@@ -94,7 +94,19 @@ namespace TextRPG
         {
             Area a = new Area();
             a.description = description;
-            areas.Add(id, a);
+            try {
+                areas.Add(id, a);
+            }
+            catch(ArgumentException e)
+            {
+                while(areas.ContainsKey(id))
+                {
+                    Random r = new Random();
+                    id = r.Next();
+                }
+            }
+            addAreaToXML(id, a);
+            GUI.Instance.appendToOutput("Area added with id:" + id);
         }
 
         private void addAreaToXML(int id, Area a)
