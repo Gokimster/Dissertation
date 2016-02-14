@@ -166,9 +166,10 @@ namespace TextRPG
             }
             else
             {
-                Debug.WriteLine("Input not valid");
-                return false;
+                LuaManager.executeCommand(s);
+                return true;
             }
+
 
         }
     }

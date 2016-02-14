@@ -12,10 +12,10 @@ namespace TextRPG
 
         public ItemManager()
         {
-            loadAreas();
+            loadItems();
         }
 
-        private void loadAreas()
+        private void loadItems()
         {
             xElem = PersistenceManager.initXML(Properties.Settings.Default.itemFile, "items");
             items = new Dictionary<int, Item>();
