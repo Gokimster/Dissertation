@@ -90,9 +90,10 @@ namespace TextRPG
             }
         }
 
-        public void addArea(int id, string description)
+        public void addArea(int id, string name, string description)
         {
             Area a = new Area();
+            a.name = name;
             a.description = description;
             try {
                 areas.Add(id, a);
@@ -112,17 +113,32 @@ namespace TextRPG
         private void addAreaToXML(int id, Area a)
         {
             xElem.Add(new XElement("area", new XElement("id", id), new XElement("description", a.description), new XElement("name", a.name), new XElement("connections")));
+            xElem.Save(Properties.Settings.Default.areaFile);
         }
 
-        private void addConnectionToAreaInXML(int areaId, string connection, int connectingAreaId)
+        public void addConnectionToArea(int areaId, string connection, int connectingAreaId)
         {
-            var areas = from area in xElem.Elements("area")
-                             where (int)area.Element("Id") == areaId
+            var ar = from area in xElem.Elements("area")
+                             where (int)area.Element("id") == areaId
                              select area;
-            foreach (XElement xel in areas)
+            foreach (XElement xel in ar)
             {
                 xel.Element("connections").Add(new XElement("connection",new XElement("con", connection), new XElement("area", connectingAreaId)));
+                areas[areaId].addConnection(connection, connectingAreaId);
             }
+
+            ar = from area in xElem.Elements("area")
+                        where (int)area.Element("id") == connectingAreaId
+                        select area;
+            foreach (XElement xel in ar)
+            {
+                string opCon = Area.getOpposingConnectionString(connection);
+                xel.Element("connections").Add(new XElement("connection", new XElement("con", opCon), new XElement("area", areaId)));
+                areas[connectingAreaId].addConnection(opCon, areaId);
+            }
+
+            
+            xElem.Save(Properties.Settings.Default.areaFile);
         }
     }
 }

@@ -145,5 +145,21 @@ namespace TextRPG
                 default: return AreaConnection.N;
             }
         }
+
+        public static string getOpposingConnectionString(string s)
+        {
+            switch (s)
+            {
+                case "N":
+                case "north": return "S";
+                case "S":
+                case "south": return "N";
+                case "E":
+                case "east": return "W";
+                case "W":
+                case "west": return "E";
+                default: return "N";
+            }
+        }
     }
 }
