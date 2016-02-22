@@ -67,6 +67,20 @@ namespace TextRPG
             return c;
         }
 
+        public static Item getItem(int id)
+        {
+            XElement xElem = PersistenceManager.initXML(Properties.Settings.Default.itemFile, "items");
+            Item i = null;
+            foreach (var item in xElem.Elements())
+            {
+                if (id == Int32.Parse(item.Element("id").Value))
+                {
+                    i = new Item(item.Element("name").Value, item.Element("description").Value);
+                }
+            }
+            return i;
+        }
+
         public static void inspect(string s)
         {
             Item i = AreaManager.Instance.getCurrAreaItemFromName(s);

@@ -31,6 +31,19 @@ namespace TextRPG
             addItemToXML(i);
         }
 
+        public void addItem(int id)
+        {
+            Item i = GameManager.getItem(id);
+            if (i != null)
+            {
+                items.Add(i);
+            }
+            else
+            {
+                Console.WriteLine("Couldn't add item to inventory");
+            }
+        }
+
         private void addItemToXML(Item i)
         {
             xElem.Add(new XElement("item", new XElement("name", i.name), new XElement("description", i.description)));

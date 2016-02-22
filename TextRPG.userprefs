@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="TextRPG\TextRPG.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Gokimster\Desktop\school\Dissertation\TextRPG\TextRPG\Area.cs">
+    <Files>
+      <File FileName="c:\Users\Gokimster\Desktop\school\Dissertation\TextRPG\TextRPG\Area.cs" Line="20" Column="42" />
+      <File FileName="TextRPG\GUI.resx" Line="10" Column="67" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -123,6 +123,10 @@ namespace TextRPG
                              select area;
             foreach (XElement xel in ar)
             {
+                if(xel.Element("connections") == null)
+                {
+                    xel.Add(new XElement("connections"));
+                }
                 xel.Element("connections").Add(new XElement("connection",new XElement("con", connection), new XElement("area", connectingAreaId)));
                 areas[areaId].addConnection(connection, connectingAreaId);
             }
@@ -132,6 +136,10 @@ namespace TextRPG
                         select area;
             foreach (XElement xel in ar)
             {
+                if (xel.Element("connections") == null)
+                {
+                    xel.Add(new XElement("connections"));
+                }
                 string opCon = Area.getOpposingConnectionString(connection);
                 xel.Element("connections").Add(new XElement("connection", new XElement("con", opCon), new XElement("area", areaId)));
                 areas[connectingAreaId].addConnection(opCon, areaId);
@@ -140,5 +148,23 @@ namespace TextRPG
             
             xElem.Save(Properties.Settings.Default.areaFile);
         }
+
+        public void addItemToArea(int areaId, int itemId)
+        {
+            var ar = from area in xElem.Elements("area")
+                     where (int)area.Element("id") == areaId
+                     select area;
+            foreach (XElement xel in ar)
+            {
+                if (xel.Element("items") == null)
+                {
+                    xel.Add(new XElement("items"));
+                }
+                xel.Element("items").Add(new XElement("item", new XElement("id", itemId)));
+                areas[areaId].addItem(itemId);
+            }
+            xElem.Save(Properties.Settings.Default.areaFile);
+        }
+
     }
 }

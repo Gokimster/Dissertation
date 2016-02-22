@@ -89,6 +89,11 @@ namespace TextRPG
             }
         }
 
+        public void addItem(int id)
+        {
+            inventory.addItem(id);
+        }
+
         public Enemy getEnemyFromName(string name)
         {
             foreach (Character c in npcs)
