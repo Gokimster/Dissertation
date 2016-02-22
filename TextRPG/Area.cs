@@ -76,7 +76,7 @@ namespace TextRPG
             connections.Add(ac, connectingAreaId);
         }
 
-        public void addNpc(int id)
+        public bool addNpc(int id)
         {
             Character c = GameManager.getNpc(id);
             if (c != null)
@@ -86,12 +86,14 @@ namespace TextRPG
             else
             {
                 Console.WriteLine("Couldn't add Enemy to room");
+                return false;
             }
+            return true;
         }
 
-        public void addItem(int id)
+        public bool addItem(int id)
         {
-            inventory.addItem(id);
+            return inventory.addItemToInventory(id);
         }
 
         public Enemy getEnemyFromName(string name)

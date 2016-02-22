@@ -28,6 +28,12 @@ namespace TextRPG
             }
         }
 
+        public void addItem(int id, string name, string description)
+        {
+            xElem.Add(new XElement("item", new XElement("id", id), new XElement("name", name), new XElement("description", description)));
+            xElem.Save(Properties.Settings.Default.itemFile);
+        }
+
         public Item getItem(int id)
         {
             //TO DO: check if item id exists

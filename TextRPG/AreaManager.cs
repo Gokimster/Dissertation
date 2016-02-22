@@ -145,7 +145,7 @@ namespace TextRPG
                 areas[connectingAreaId].addConnection(opCon, areaId);
             }
 
-            
+            GUI.Instance.appendToOutput("Area connection from area - "+ areaId+" to area - "+ connectingAreaId);
             xElem.Save(Properties.Settings.Default.areaFile);
         }
 
@@ -156,15 +156,47 @@ namespace TextRPG
                      select area;
             foreach (XElement xel in ar)
             {
-                if (xel.Element("items") == null)
+                if (areas[areaId].addItem(itemId))
                 {
-                    xel.Add(new XElement("items"));
+                    if (xel.Element("items") == null)
+                    {
+                        xel.Add(new XElement("items"));
+                    }
+                    xel.Element("items").Add(new XElement("item", new XElement("id", itemId)));
+                    xElem.Save(Properties.Settings.Default.areaFile);
+                    GUI.Instance.appendToOutput("Item with id - " + itemId + " added to area - " + areaId);
                 }
-                xel.Element("items").Add(new XElement("item", new XElement("id", itemId)));
-                areas[areaId].addItem(itemId);
+                else
+                {
+                    GUI.Instance.appendToOutput("Couldn't add item to area");
+                }
             }
-            xElem.Save(Properties.Settings.Default.areaFile);
         }
 
+        public void addNpcToArea(int areaId, int npcId)
+        {
+            var ar = from area in xElem.Elements("area")
+                     where (int)area.Element("id") == areaId
+                     select area;
+            foreach (XElement xel in ar)
+            {
+                if (areas[areaId].addNpc(npcId))
+                {
+                    if (xel.Element("npcs") == null)
+                    {
+                        xel.Add(new XElement("npcs"));
+                    }
+                    xel.Element("npcs").Add(new XElement("npc", new XElement("id", npcId)));
+                    xElem.Save(Properties.Settings.Default.areaFile);
+                    GUI.Instance.appendToOutput("NPC with id - " + npcId + " added to area - " + areaId);
+                }
+                else
+                {
+                    GUI.Instance.appendToOutput("Couldn't add npc to area");
+                }
+                
+            }
+        }
+        
     }
 }

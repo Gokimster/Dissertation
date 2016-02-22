@@ -31,7 +31,7 @@ namespace TextRPG
             addItemToXML(i);
         }
 
-        public void addItem(int id)
+        public bool addItemToInventory(int id)
         {
             Item i = GameManager.getItem(id);
             if (i != null)
@@ -41,7 +41,9 @@ namespace TextRPG
             else
             {
                 Console.WriteLine("Couldn't add item to inventory");
+                return false;
             }
+            return true;
         }
 
         private void addItemToXML(Item i)
