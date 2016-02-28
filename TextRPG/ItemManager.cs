@@ -30,7 +30,27 @@ namespace TextRPG
 
         public void addItem(int id, string name, string description)
         {
-            xElem.Add(new XElement("item", new XElement("id", id), new XElement("name", name), new XElement("description", description)));
+            Item i = new Item(name, description);
+            try
+            {
+                items.Add(id, i);
+            }
+            catch (ArgumentException e)
+            {
+                Random r = new Random();
+                while (items.ContainsKey(id))
+                {
+                    id = r.Next();
+                }
+                items.Add(id, i);
+            }
+            addItemToXML(id, i);
+            GUI.Instance.appendToOutput("Item added with id:" + id);
+        }
+        
+        private void addItemToXML(int id, Item i)
+        {
+            xElem.Add(new XElement("item", new XElement("id", id), new XElement("description", i.description), new XElement("name", i.name)));
             xElem.Save(Properties.Settings.Default.itemFile);
         }
 

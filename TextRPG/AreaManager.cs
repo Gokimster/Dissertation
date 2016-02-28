@@ -100,11 +100,12 @@ namespace TextRPG
             }
             catch(ArgumentException e)
             {
-                while(areas.ContainsKey(id))
+                Random r = new Random();
+                while (areas.ContainsKey(id))
                 {
-                    Random r = new Random();
                     id = r.Next();
                 }
+                areas.Add(id, a);
             }
             addAreaToXML(id, a);
             GUI.Instance.appendToOutput("Area added with id:" + id);

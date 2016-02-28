@@ -2,9 +2,9 @@
 {
     public class CombatCharacter:Character
     {
-        protected float maxHealth;
+        public float maxHealth {get; set;}
         public float currHealth { get; set; }
-        protected float dmg;
+        public float dmg { get; set;}
 
         public CombatCharacter()
         {

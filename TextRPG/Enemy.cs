@@ -2,6 +2,11 @@
 {
     public class Enemy:CombatCharacter
     {
+        public Enemy()
+        {
+
+        }
+
         public Enemy(float maxHealth, string name, float dmg): base(maxHealth, name, dmg)
         {
         }
