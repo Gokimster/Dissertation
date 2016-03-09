@@ -46,10 +46,16 @@ namespace TextRPG
             NonTerminal name = new NonTerminal("name");
             NonTerminal nameString = new NonTerminal("nameString");
 
+            //lua commands
+            NonTerminal scriptCommand = new NonTerminal("scriptCommand");
+            NonTerminal scriptOp = new NonTerminal("scriptOp");
+            NonTerminal endScriptOp = new NonTerminal("endScriptOp");
+            NonTerminal endScriptCommand = new NonTerminal("endScriptCommand");
+
             //TO-DO : Change so that it can have mutiple words in it
             name.Rule = new IdentifierTerminal("identifier");
             nameString.Rule = name | name + nameString;
-            command.Rule = moveCommand | pickUpCommand | helpCommand | attackCommand;
+            command.Rule = moveCommand | pickUpCommand | helpCommand | attackCommand | scriptCommand | endScriptCommand;
 
             //move
             moveOp.Rule = ToTerm("go") | "head";
@@ -73,6 +79,12 @@ namespace TextRPG
             inspectCommand.Rule = inspectOp + nameString;
             //TO DO: add rule to help command
             helpCommand.Rule = inventoryCommand | inspectCommand;
+
+            //script commands
+            scriptOp.Rule = ToTerm("script") | "new script" | "lua script";
+            endScriptOp.Rule = ToTerm("end") | "finish" | "stop";
+            scriptCommand.Rule = scriptOp + name;
+            endScriptCommand.Rule = endScriptOp + scriptOp;
 
             this.Root = command;
         }
@@ -135,6 +147,20 @@ namespace TextRPG
                     GameManager.doCombat(s);
                 }
             }
+
+            if (mainNode.Term.Name == "endScriptCommand")
+            {
+                LuaManager.endScript();
+            }
+
+            if (mainNode.Term.Name == "scriptCommand")
+            {
+                if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)
+                {
+                    string s = (string)mainNode.ChildNodes[1].ChildNodes[0].Token.Value;
+                    LuaManager.startScript(s);
+                }
+            }
         }
 
         private string getStringFromNameString(ParseTreeNode n, string s = "" )
@@ -166,6 +192,11 @@ namespace TextRPG
             }
             else
             {
+                if(LuaManager.creatingScript)
+                {
+                    LuaManager.appendToScript(s);
+                }
+
                 LuaManager.executeCommand(s);
                 return true;
             }
