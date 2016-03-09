@@ -50,5 +50,23 @@ namespace TextRPG
             script[currScriptSize++] = s;
         }
 
+        public static bool executeScript(string scriptName)
+        {
+            Lua lua = new Lua();
+            lua.LoadCLRPackage();
+            lua.DoString(@" import ('TextRPG', 'TextRPG') 
+               import ('System') ");
+            try
+            {
+                var x = lua.DoFile(scriptName+".lua");
+                GUI.Instance.appendToOutput(x.ToString());
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
     }
 }

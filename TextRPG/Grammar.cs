@@ -192,12 +192,13 @@ namespace TextRPG
             }
             else
             {
-                if(LuaManager.creatingScript)
+                if (LuaManager.creatingScript)
                 {
                     LuaManager.appendToScript(s);
                 }
-
-                LuaManager.executeCommand(s);
+                else {
+                    LuaManager.executeCommand(s);
+                }
                 return true;
             }
 
