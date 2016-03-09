@@ -62,12 +62,12 @@
             this.output.ForeColor = System.Drawing.Color.White;
             this.output.Location = new System.Drawing.Point(0, 0);
             this.output.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.output.Multiline = true;
             this.output.Name = "output";
             this.output.ReadOnly = true;
             this.output.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.output.Size = new System.Drawing.Size(664, 429);
+            this.output.Size = new System.Drawing.Size(664, 425);
             this.output.TabIndex = 3;
+            this.output.Text = "";
             // 
             // inputPanel
             // 
@@ -77,10 +77,10 @@
             this.inputPanel.Controls.Add(this.inputLocationLabel);
             this.inputPanel.Controls.Add(this.input);
             this.inputPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inputPanel.Location = new System.Drawing.Point(0, 429);
+            this.inputPanel.Location = new System.Drawing.Point(0, 425);
             this.inputPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.inputPanel.Name = "inputPanel";
-            this.inputPanel.Size = new System.Drawing.Size(664, 37);
+            this.inputPanel.Size = new System.Drawing.Size(664, 41);
             this.inputPanel.TabIndex = 2;
             // 
             // inputLocationLabel
@@ -98,14 +98,29 @@
             // 
             // input
             // 
+            this.input.AcceptsTab = true;
+            this.input.AllowDrop = true;
+            this.input.AutoCompleteCustomSource.AddRange(new string[] {
+            "inspect",
+            "go",
+            "head",
+            "inventory",
+            "show",
+            "attack",
+            "ItemManager.Instance:",
+            "AreaManager.Instance:",
+            "NpcManager.Instance:"});
+            this.input.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.input.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.input.BackColor = System.Drawing.Color.Black;
             this.input.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.input.Font = new System.Drawing.Font("Power Red and Green", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.input.ForeColor = System.Drawing.Color.White;
-            this.input.Location = new System.Drawing.Point(30, 6);
+            this.input.Location = new System.Drawing.Point(30, 5);
             this.input.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.input.Multiline = true;
             this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(608, 26);
+            this.input.Size = new System.Drawing.Size(608, 31);
             this.input.TabIndex = 1;
             this.input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
             // 
