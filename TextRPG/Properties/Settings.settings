@@ -14,5 +14,8 @@
     <Setting Name="npcFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">npcs.xml</Value>
     </Setting>
+    <Setting Name="combatScriptsFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">combatScripts.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -95,7 +95,7 @@ namespace TextRPG
             Enemy e = AreaManager.Instance.getCurrAreaEnemyFromName(s);
             if(e != null)
             {
-                CombatManager.doCombat(e);
+                CombatManager.Instance.doCombat(e);
                 GUI.Instance.appendToOutput("Combat ended with "+ e.name + " - Player Health:" + Player.Instance.currHealth + "; Enemy Health: " + e.currHealth);
             }
         }

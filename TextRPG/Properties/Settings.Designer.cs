@@ -67,5 +67,17 @@ namespace TextRPG.Properties {
                 this["npcFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("combatScripts.xml")]
+        public string combatScriptsFile {
+            get {
+                return ((string)(this["combatScriptsFile"]));
+            }
+            set {
+                this["combatScriptsFile"] = value;
+            }
+        }
     }
 }
