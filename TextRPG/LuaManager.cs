@@ -19,8 +19,7 @@ namespace TextRPG
             lua.DoString(@" import ('TextRPG', 'TextRPG') 
                import ('System') ");
             try {
-                var x = lua.DoString(luaCommand);
-                GUI.Instance.appendToOutput(x.ToString());
+                lua.DoString(luaCommand);
                 return true;
             }
             catch (Exception e)
