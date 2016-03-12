@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<combatScripts xmlns="urn:lst-emp:emp">
+  <script xmlns="">
+    <function>mainCombat</function>
+    <script>newCombat</script>
+  </script>
+  <script xmlns="">
+    <function>phase2</function>
+    <script>phase2</script>
+  </script>
+  <script xmlns="">
+    <function>phase1</function>
+    <script>phase1</script>
+  </script>
+</combatScripts>

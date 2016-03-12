@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<npcs xmlns="urn:lst-emp:emp">
+  <npc xmlns="">
+    <id>1</id>
+    <name>Wolf</name>
+    <maxHealth>20</maxHealth>
+    <dmg>5</dmg>
+    <isEnemy>1</isEnemy>
+  </npc>
+  <npc xmlns="">
+    <id>1884216893</id>
+    <name>spider</name>
+    <isEnemy>0</isEnemy>
+  </npc>
+  <npc xmlns="">
+    <id>2</id>
+    <name>Big spider</name>
+    <maxHealth>10</maxHealth>
+    <dmg>3</dmg>
+    <isEnemy>1</isEnemy>
+  </npc>
+</npcs>

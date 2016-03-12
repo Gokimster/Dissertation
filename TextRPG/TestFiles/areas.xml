@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<areas xmlns="urn:lst-emp:emp">
+  <area xmlns="">
+    <id>1</id>
+    <description>A quiet room</description>
+    <connections xmlns="">
+      <connection xmlns="">
+        <con>N</con>
+        <area>2</area>
+      </connection>
+      <connection>
+        <con>E</con>
+        <area>3</area>
+      </connection>
+    </connections>
+    <name>Living Room</name>
+    <items>
+      <item>
+        <id>10</id>
+      </item>
+    </items>
+  </area>
+  <area xmlns="">
+    <id>2</id>
+    <description>A bed is in the middle of the room, a wardrobe hangs to the right</description>
+    <connections xmlns="">
+      <connection xmlns="">
+        <con>S</con>
+        <area>1</area>
+      </connection>
+    </connections>
+    <items>
+      <item>
+        <id>1</id>
+      </item>
+      <item>
+        <id>3</id>
+      </item>
+      <item>
+        <id>2</id>
+      </item>
+    </items>
+    <name>Bedroom</name>
+    <npcs>
+      <npc>
+        <id>1</id>
+      </npc>
+    </npcs>
+  </area>
+  <area xmlns="">
+    <id>3</id>
+    <description>Bathroom</description>
+    <name />
+    <connections>
+      <connection>
+        <con>W</con>
+        <area>1</area>
+      </connection>
+    </connections>
+    <items>
+      <item>
+        <id>3</id>
+      </item>
+    </items>
+  </area>
+</areas>
