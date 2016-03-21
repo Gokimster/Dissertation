@@ -42,6 +42,7 @@ namespace TextRPG
         {
             creatingScript = true;
             System.IO.File.WriteAllLines(currScriptName, script);
+            GUI.Instance.appendToOutput("Created script " + currScriptName);
         }
 
         public static void appendToScript(string s)

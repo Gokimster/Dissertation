@@ -52,10 +52,11 @@ namespace TextRPG
             NonTerminal endScriptOp = new NonTerminal("endScriptOp");
             NonTerminal endScriptCommand = new NonTerminal("endScriptCommand");
 
-            //TO-DO : Change so that it can have mutiple words in it
+
+            command.Rule = moveCommand | pickUpCommand | helpCommand | attackCommand | scriptCommand | endScriptCommand;
+            //identifiers
             name.Rule = new IdentifierTerminal("identifier");
             nameString.Rule = name | name + nameString;
-            command.Rule = moveCommand | pickUpCommand | helpCommand | attackCommand | scriptCommand | endScriptCommand;
 
             //move
             moveOp.Rule = ToTerm("go") | "head";
@@ -197,7 +198,11 @@ namespace TextRPG
                     LuaManager.appendToScript(s);
                 }
                 else {
-                    LuaManager.executeCommand(s);
+                    if(!LuaManager.executeCommand(s))
+                    {
+                        GUI.Instance.appendToOutput("No such command.");
+                    }
+
                 }
                 return true;
             }
