@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace TextRPG
 {
@@ -47,6 +48,34 @@ namespace TextRPG
             addItemToXML(id, i);
             GUI.Instance.appendToOutput("Item added with id:" + id);
         }
+
+        public void setItemName(int id, string name)
+        {
+            setItemProperty(id, "name", name);
+        }
+
+        public void setItemDescription(int id, string desc)
+        {
+            setItemProperty(id, "description", desc);
+        }
+
+        public void setItemProperty(int id, string property, object value)
+        {
+            Item i;
+            if (items.TryGetValue(id, out i))
+            {
+                var it = from item in xElem.Elements("item")
+                         where (int)item.Element("id") == id
+                         select item;
+                foreach (XElement xel in it)
+                {
+                    xel.Element(property).SetValue(value);
+                }
+                i[property] = value;
+                xElem.Save(Properties.Settings.Default.itemFile);
+            }
+        }
+
         
         private void addItemToXML(int id, Item i)
         {
