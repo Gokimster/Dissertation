@@ -198,6 +198,38 @@ namespace TextRPG
                 
             }
         }
-        
+
+        public void setAreaName(int id, string name)
+        {
+            setAreaProperty(id, "name", name);
+        }
+
+        public void setAreaDescription(int id, string desc)
+        {
+            setAreaProperty(id, "description", desc);
+        }
+
+        public void setAreaProperty(int id, string property, object value)
+        {
+            Area a;
+            if (areas.TryGetValue(id, out a))
+            {
+                var ar = from area in xElem.Elements("area")
+                         where (int)area.Element("id") == id
+                         select area;
+                foreach (XElement xel in ar)
+                {
+                    xel.Element(property).SetValue(value);
+                }
+                a[property] = value;
+                xElem.Save(Properties.Settings.Default.areaFile);
+                GUI.Instance.appendToOutput("Area " + property+ " changed to "+value.ToString());
+            }
+            else
+            {
+                GUI.Instance.appendToOutput("Could not change the area "+ property);
+            }
+        }
+
     }
 }

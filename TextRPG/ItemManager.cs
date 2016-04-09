@@ -73,6 +73,11 @@ namespace TextRPG
                 }
                 i[property] = value;
                 xElem.Save(Properties.Settings.Default.itemFile);
+                GUI.Instance.appendToOutput("Area " + property + " changed to " + value.ToString());
+            }
+            else
+            {
+                GUI.Instance.appendToOutput("Could not change the item " + property);
             }
         }
 
