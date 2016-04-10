@@ -16,6 +16,12 @@ namespace TextRPG
             loadItems();
         }
 
+        public Item getItem(int id)
+        {
+            //TO DO: check if item id exists
+            return items[id];
+        }
+
         private void loadItems()
         {
             xElem = PersistenceManager.initXML(Properties.Settings.Default.itemFile, "items");
@@ -32,21 +38,28 @@ namespace TextRPG
         public void addItem(int id, string name, string description)
         {
             Item i = new Item(name, description);
-            try
+            if (itemSecurityCheck(i))
             {
-                items.Add(id, i);
-            }
-            catch (ArgumentException e)
-            {
-                Random r = new Random();
-                while (items.ContainsKey(id))
+                try
                 {
-                    id = r.Next();
+                    items.Add(id, i);
                 }
-                items.Add(id, i);
+                catch (ArgumentException e)
+                {
+                    Random r = new Random();
+                    while (items.ContainsKey(id))
+                    {
+                        id = r.Next();
+                    }
+                    items.Add(id, i);
+                }
+                addItemToXML(id, i);
+                GUI.Instance.appendToOutput("Item added with id:" + id);
             }
-            addItemToXML(id, i);
-            GUI.Instance.appendToOutput("Item added with id:" + id);
+            else
+            {
+                GUI.Instance.appendToOutput("Could not add item");
+            }
         }
 
         public void setItemName(int id, string name)
@@ -64,16 +77,25 @@ namespace TextRPG
             Item i;
             if (items.TryGetValue(id, out i))
             {
-                var it = from item in xElem.Elements("item")
-                         where (int)item.Element("id") == id
-                         select item;
-                foreach (XElement xel in it)
+                Item temp = i;
+                temp[property] = value;
+                if (itemSecurityCheck(temp))
                 {
-                    xel.Element(property).SetValue(value);
+                    var it = from item in xElem.Elements("item")
+                             where (int)item.Element("id") == id
+                             select item;
+                    foreach (XElement xel in it)
+                    {
+                        xel.Element(property).SetValue(value);
+                    }
+                    i[property] = value;
+                    xElem.Save(Properties.Settings.Default.itemFile);
+                    GUI.Instance.appendToOutput("Area " + property + " changed to " + value.ToString());
                 }
-                i[property] = value;
-                xElem.Save(Properties.Settings.Default.itemFile);
-                GUI.Instance.appendToOutput("Area " + property + " changed to " + value.ToString());
+                else
+                {
+                    GUI.Instance.appendToOutput("Could not change the item " + property + " to: " + value.ToString());
+                }
             }
             else
             {
@@ -88,10 +110,12 @@ namespace TextRPG
             xElem.Save(Properties.Settings.Default.itemFile);
         }
 
-        public Item getItem(int id)
+        private bool itemSecurityCheck(Item i)
         {
-            //TO DO: check if item id exists
-            return items[id];
+            //TO-DO: add security checks for item properties
+            return true;
         }
+
+
     }
 }

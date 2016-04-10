@@ -95,20 +95,28 @@ namespace TextRPG
             Area a = new Area();
             a.name = name;
             a.description = description;
-            try {
-                areas.Add(id, a);
-            }
-            catch(ArgumentException e)
+            if (areaSecurityCheck(a))
             {
-                Random r = new Random();
-                while (areas.ContainsKey(id))
+                try
                 {
-                    id = r.Next();
+                    areas.Add(id, a);
                 }
-                areas.Add(id, a);
+                catch (ArgumentException e)
+                {
+                    Random r = new Random();
+                    while (areas.ContainsKey(id))
+                    {
+                        id = r.Next();
+                    }
+                    areas.Add(id, a);
+                }
+                addAreaToXML(id, a);
+                GUI.Instance.appendToOutput("Area added with id:" + id);
             }
-            addAreaToXML(id, a);
-            GUI.Instance.appendToOutput("Area added with id:" + id);
+            else
+            {
+                GUI.Instance.appendToOutput("Could not add area");
+            }
         }
 
         private void addAreaToXML(int id, Area a)
@@ -214,16 +222,25 @@ namespace TextRPG
             Area a;
             if (areas.TryGetValue(id, out a))
             {
-                var ar = from area in xElem.Elements("area")
-                         where (int)area.Element("id") == id
-                         select area;
-                foreach (XElement xel in ar)
+                Area temp = a;
+                temp[property] = value;
+                if (areaSecurityCheck(temp))
                 {
-                    xel.Element(property).SetValue(value);
+                    var ar = from area in xElem.Elements("area")
+                             where (int)area.Element("id") == id
+                             select area;
+                    foreach (XElement xel in ar)
+                    {
+                        xel.Element(property).SetValue(value);
+                    }
+                    a[property] = value;
+                    xElem.Save(Properties.Settings.Default.areaFile);
+                    GUI.Instance.appendToOutput("Area " + property + " changed to " + value.ToString());
                 }
-                a[property] = value;
-                xElem.Save(Properties.Settings.Default.areaFile);
-                GUI.Instance.appendToOutput("Area " + property+ " changed to "+value.ToString());
+                else
+                {
+                    GUI.Instance.appendToOutput("Could not change the area " + property);
+                }
             }
             else
             {
@@ -231,5 +248,10 @@ namespace TextRPG
             }
         }
 
+        private bool areaSecurityCheck(Area i)
+        {
+            //TO-DO: add security checks for area properties
+            return true;
+        }
     }
 }

@@ -41,21 +41,28 @@ namespace TextRPG
         public void addNpc(int id, string name)
         {
             Character c = new Character(name);
-            try
+            if (npcSecurityCheck(c))
             {
-                npcs.Add(id, c);
-            }
-            catch (ArgumentException e)
-            {
-                Random r = new Random();
-                while (npcs.ContainsKey(id))
+                try
                 {
-                    id = r.Next();
+                    npcs.Add(id, c);
                 }
-                npcs.Add(id, c);
+                catch (ArgumentException e)
+                {
+                    Random r = new Random();
+                    while (npcs.ContainsKey(id))
+                    {
+                        id = r.Next();
+                    }
+                    npcs.Add(id, c);
+                }
+                addNpcToXML(id, c);
+                GUI.Instance.appendToOutput("NPC` added with id:" + id);
             }
-            addNpcToXML(id, c);
-            GUI.Instance.appendToOutput("NPC` added with id:" + id);
+            else
+            {
+                GUI.Instance.appendToOutput("Could not add Npc");
+            }
         }
 
         private void addNpcToXML(int id, Character c)
@@ -67,21 +74,28 @@ namespace TextRPG
         public void addEnemy(int id, string name, float maxHealth, float dmg)
         {
             Enemy c = new Enemy(maxHealth, name, dmg);
-            try
+            if (npcSecurityCheck(c))
             {
-                npcs.Add(id, c);
-            }
-            catch (ArgumentException e)
-            {
-                Random r = new Random();
-                while (npcs.ContainsKey(id))
+                try
                 {
-                    id = r.Next();
+                    npcs.Add(id, c);
                 }
-                npcs.Add(id, c);
+                catch (ArgumentException e)
+                {
+                    Random r = new Random();
+                    while (npcs.ContainsKey(id))
+                    {
+                        id = r.Next();
+                    }
+                    npcs.Add(id, c);
+                }
+                addEnemyToXML(id, c);
+                GUI.Instance.appendToOutput("Enemy added with id:" + id);
             }
-            addEnemyToXML(id, c);
-            GUI.Instance.appendToOutput("Enemy added with id:" + id);
+            else
+            {
+                GUI.Instance.appendToOutput("Could not add enemy");
+            }
         }
 
         private void addEnemyToXML(int id, Enemy e)
@@ -125,21 +139,36 @@ namespace TextRPG
             Character c;
             if (npcs.TryGetValue(id, out c))
             {
-                var ch = from npc in xElem.Elements("npc")
-                         where (int)npc.Element("id") == id
-                         select npc;
-                foreach (XElement xel in ch)
+                Character temp = c;
+                temp[property] = value;
+                if (npcSecurityCheck(temp))
                 {
-                    xel.Element(property).SetValue(value);
+                    var ch = from npc in xElem.Elements("npc")
+                             where (int)npc.Element("id") == id
+                             select npc;
+                    foreach (XElement xel in ch)
+                    {
+                        xel.Element(property).SetValue(value);
+                    }
+                    c[property] = value;
+                    xElem.Save(Properties.Settings.Default.npcFile);
+                    GUI.Instance.appendToOutput("Npc " + property + " changed to " + value.ToString());
                 }
-                c[property] = value;
-                xElem.Save(Properties.Settings.Default.npcFile);
-                GUI.Instance.appendToOutput("Npc " + property + " changed to " + value.ToString());
+                else
+                {
+                    GUI.Instance.appendToOutput("Could not change the npc " + property);
+                }
             }
             else
             {
                 GUI.Instance.appendToOutput("Could not change the npc " + property);
             }
+        }
+
+        private bool npcSecurityCheck(Character c)
+        {
+            //TO-DO: add security checks for npc properties
+            return true;
         }
     }
 }
