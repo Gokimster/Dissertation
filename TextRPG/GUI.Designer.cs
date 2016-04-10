@@ -65,7 +65,7 @@
             this.output.Name = "output";
             this.output.ReadOnly = true;
             this.output.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.output.Size = new System.Drawing.Size(664, 425);
+            this.output.Size = new System.Drawing.Size(664, 430);
             this.output.TabIndex = 3;
             this.output.Text = "";
             // 
@@ -77,10 +77,10 @@
             this.inputPanel.Controls.Add(this.inputLocationLabel);
             this.inputPanel.Controls.Add(this.input);
             this.inputPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inputPanel.Location = new System.Drawing.Point(0, 425);
+            this.inputPanel.Location = new System.Drawing.Point(0, 430);
             this.inputPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.inputPanel.Name = "inputPanel";
-            this.inputPanel.Size = new System.Drawing.Size(664, 41);
+            this.inputPanel.Size = new System.Drawing.Size(664, 36);
             this.inputPanel.TabIndex = 2;
             // 
             // inputLocationLabel
@@ -109,7 +109,17 @@
             "attack",
             "ItemManager.Instance:",
             "AreaManager.Instance:",
-            "NpcManager.Instance:"});
+            "NpcManager.Instance:",
+            "NpcManager.Instance:setNpcName",
+            "NpcManager.Instance:setNpcMaxHealth",
+            "NpcManager.Instance:setNpcDmg",
+            "NpcManager.Instance:addNpc",
+            "AreaManager.Instance:addArea",
+            "AreaManager.Instance:setAreaName",
+            "AreaManager.Instance:setAreaDescription",
+            "ItemManager.Instance:addItem",
+            "ItemManager.Instance:setItemName",
+            "ItemManager.Instance:setItemDescription"});
             this.input.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.input.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.input.BackColor = System.Drawing.Color.Black;
@@ -118,9 +128,8 @@
             this.input.ForeColor = System.Drawing.Color.White;
             this.input.Location = new System.Drawing.Point(30, 5);
             this.input.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.input.Multiline = true;
             this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(608, 31);
+            this.input.Size = new System.Drawing.Size(608, 26);
             this.input.TabIndex = 1;
             this.input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
             // 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace TextRPG
 {
@@ -102,6 +103,43 @@ namespace TextRPG
                 return (Enemy)npcs[id];
             }
             return null;
+        }
+
+        public void setNpcName(int id, string name)
+        {
+            setNpcProperty(id, "name", name);
+        }
+
+        public void setNpcMaxHealth(int id, int hp)
+        {
+            setNpcProperty(id, "maxHealth", hp);
+        }
+
+        public void setNpcDmg(int id, int dmg)
+        {
+            setNpcProperty(id, "dmg", dmg);
+        }
+
+        public void setNpcProperty(int id, string property, object value)
+        {
+            Character c;
+            if (npcs.TryGetValue(id, out c))
+            {
+                var ch = from npc in xElem.Elements("npc")
+                         where (int)npc.Element("id") == id
+                         select npc;
+                foreach (XElement xel in ch)
+                {
+                    xel.Element(property).SetValue(value);
+                }
+                c[property] = value;
+                xElem.Save(Properties.Settings.Default.npcFile);
+                GUI.Instance.appendToOutput("Npc " + property + " changed to " + value.ToString());
+            }
+            else
+            {
+                GUI.Instance.appendToOutput("Could not change the npc " + property);
+            }
         }
     }
 }
