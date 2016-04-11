@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items xmlns="urn:lst-emp:emp">
+  <item xmlns="">
+    <id>1</id>
+    <name>Knife</name>
+    <description>A sturdy knife</description>
+  </item>
+  <item xmlns="">
+    <id>2</id>
+    <name>Book</name>
+    <description>A Generic Book</description>
+  </item>
+  <item xmlns="">
+    <id>3</id>
+    <name>Broken Sword</name>
+    <description>A broken sword</description>
+  </item>
+  <item xmlns="">
+    <id>10</id>
+    <name>Chainsaw</name>
+    <description>A heavy chainsaw</description>
+  </item>
+</items>

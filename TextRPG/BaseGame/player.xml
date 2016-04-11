@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<players xmlns="urn:lst-emp:emp">
+	<player xmlns="">
+		<name>Player</name>
+		<maxHealth>50</maxHealth>
+		<dmg>5</dmg>
+		<items>
+		</items>
+	</player>
+</players>
