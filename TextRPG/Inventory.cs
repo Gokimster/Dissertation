@@ -13,7 +13,11 @@ namespace TextRPG
         {
             items = new List<Item>();
         }
-
+        
+        /// <summary>
+        /// loads  inventory from XElement
+        /// </summary>
+        /// <param name="elem"></param>
         public void loadInventory(XElement elem)
         {
             if (elem.Element("items") != null)
@@ -25,12 +29,20 @@ namespace TextRPG
             }
         }
 
-        public void addItem(Item i)
+        /// <summary>
+        /// add an item to the inventory both locally and to xml
+        /// </summary>
+        /// <param name="item"></param>
+        public void addItem(Item item)
         {
-            items.Add(i);
-            addItemToXML(i);
+            items.Add(item);
+            addItemToXML(item);
         }
-
+        
+        /// <summary>
+        /// add an item by id to the local inventory and to xml
+        /// </summary>
+        /// <param name="id"></param>
         public bool addItemToInventory(int id)
         {
             Item i = GameManager.getItem(id);
@@ -45,10 +57,14 @@ namespace TextRPG
             }
             return true;
         }
-
-        private void addItemToXML(Item i)
+        
+        /// <summary>
+        /// add an item to inventory in XML
+        /// </summary>
+        /// <param name="item"></param>
+        private void addItemToXML(Item item)
         {
-            xElem.Add(new XElement("item", new XElement("name", i.name), new XElement("description", i.description)));
+            xElem.Add(new XElement("item", new XElement("name", item.name), new XElement("description", item.description)));
         }
 
         public void removeItem(Item i)
@@ -57,6 +73,10 @@ namespace TextRPG
             removeItemFromXML(i);
         }
 
+        /// <summary>
+        /// get item from inventory by name
+        /// </summary>
+        /// <param name="itemName"></param>
         public Item getItemFromName(string itemName)
         {
             foreach(Item i in items)
@@ -75,7 +95,10 @@ namespace TextRPG
         {
 
         }
-
+        
+        /// <summary>
+        /// get a string representation of list of items in inventory 
+        /// </summary>
         public string getListOfitems()
         {
             string listOfItems = "";

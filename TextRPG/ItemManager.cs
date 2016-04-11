@@ -16,12 +16,20 @@ namespace TextRPG
             loadItems();
         }
 
+        
+        /// <summary>
+        /// get item by id
+        /// </summary>
+        /// <param name="id"></param>
         public Item getItem(int id)
         {
             //TO DO: check if item id exists
             return items[id];
         }
-
+        
+        /// <summary>
+        /// load al items from xml
+        /// </summary>
         private void loadItems()
         {
             xElem = PersistenceManager.initXML(Properties.Settings.Default.itemFile, "items");
@@ -34,7 +42,13 @@ namespace TextRPG
                 items.Add(Int32.Parse(item.Element("id").Value), i);
             }
         }
-
+        
+        /// <summary>
+        /// add an item both locally and to xml
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
         public void addItem(int id, string name, string description)
         {
             Item i = new Item(name, description);
@@ -61,17 +75,33 @@ namespace TextRPG
                 GUI.Instance.appendToOutput("Could not add item");
             }
         }
-
+        
+        /// <summary>
+        /// set the name of an existing item
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public void setItemName(int id, string name)
         {
             setItemProperty(id, "name", name);
         }
-
+        
+        /// <summary>
+        /// set the description of an existing item
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="desc"></param>
         public void setItemDescription(int id, string desc)
         {
             setItemProperty(id, "description", desc);
         }
-
+        
+        /// <summary>
+        /// set a property of an existing item
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
         public void setItemProperty(int id, string property, object value)
         {
             Item i;
@@ -102,15 +132,23 @@ namespace TextRPG
                 GUI.Instance.appendToOutput("Could not change the item " + property);
             }
         }
-
         
-        private void addItemToXML(int id, Item i)
+        /// <summary>
+        /// add an item to xml
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="item"></param>
+        private void addItemToXML(int id, Item item)
         {
-            xElem.Add(new XElement("item", new XElement("id", id), new XElement("description", i.description), new XElement("name", i.name)));
+            xElem.Add(new XElement("item", new XElement("id", id), new XElement("description", item.description), new XElement("name", item.name)));
             xElem.Save(Properties.Settings.Default.itemFile);
         }
-
-        private bool itemSecurityCheck(Item i)
+        
+        /// <summary>
+        /// security check for an item
+        /// </summary>
+        /// <param name="item"></param>
+        private bool itemSecurityCheck(Item item)
         {
             //TO-DO: add security checks for item properties
             return true;
