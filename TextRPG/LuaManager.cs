@@ -11,7 +11,10 @@ namespace TextRPG
         private static int scriptSize = 50;
         private static int currScriptSize = 0;
 
-        //static Lua lua = new Lua();
+        /// <summary>
+        /// Try to execute a Lua command given in a string
+        /// </summary>
+        /// <param name="luaCommand"></param>
         public static bool executeCommand(string luaCommand)
         {
             Lua lua = new Lua();    
@@ -29,6 +32,10 @@ namespace TextRPG
             
         }
 
+        /// <summary>
+        /// Start recording a lua script with a specific name
+        /// </summary>
+        /// <param name="scriptName"></param>
         public static void startScript(string scriptName)
         {
             creatingScript = true;
@@ -38,6 +45,9 @@ namespace TextRPG
             GUI.Instance.appendToOutput("Started Script with name : " + currScriptName + " \nWrite the Script below.");
         }
 
+        /// <summary>
+        /// Finalise a user created script by writing it to file
+        /// </summary>
         public static void endScript()
         {
             creatingScript = true;
@@ -45,11 +55,19 @@ namespace TextRPG
             GUI.Instance.appendToOutput("Created script " + currScriptName);
         }
 
+        /// <summary>
+        /// Append a string to the existing current lua script
+        /// </summary>
+        /// <param name="s"></param>
         public static void appendToScript(string s)
         {
             script[currScriptSize++] = s;
         }
 
+        /// <summary>
+        /// Execute a script from file by name
+        /// </summary>
+        /// <param name="scriptName"></param>
         public static bool executeScript(string scriptName)
         {
             Lua lua = new Lua();

@@ -18,7 +18,7 @@ namespace TextRPG
 
         
         /// <summary>
-        /// get item by id
+        /// Get item by id
         /// </summary>
         /// <param name="id"></param>
         public Item getItem(int id)
@@ -28,7 +28,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// load al items from xml
+        /// Load all items from xml
         /// </summary>
         private void loadItems()
         {
@@ -44,7 +44,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// add an item both locally and to xml
+        /// Add an item both locally and to xml
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
@@ -77,7 +77,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// set the name of an existing item
+        /// Set the name of an existing item
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
@@ -87,7 +87,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// set the description of an existing item
+        /// Set the description of an existing item
         /// </summary>
         /// <param name="id"></param>
         /// <param name="desc"></param>
@@ -97,7 +97,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// set a property of an existing item
+        /// Set a property of an existing item
         /// </summary>
         /// <param name="id"></param>
         /// <param name="property"></param>
@@ -134,7 +134,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// add an item to xml
+        /// Add an item to xml
         /// </summary>
         /// <param name="id"></param>
         /// <param name="item"></param>
@@ -145,7 +145,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// security check for an item
+        /// Security check for an item
         /// </summary>
         /// <param name="item"></param>
         private bool itemSecurityCheck(Item item)

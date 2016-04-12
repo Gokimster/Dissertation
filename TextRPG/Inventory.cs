@@ -15,7 +15,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// loads  inventory from XElement
+        /// Loads  inventory from XElement
         /// </summary>
         /// <param name="elem"></param>
         public void loadInventory(XElement elem)
@@ -30,7 +30,7 @@ namespace TextRPG
         }
 
         /// <summary>
-        /// add an item to the inventory both locally and to xml
+        /// Add an item to the inventory both locally and to xml
         /// </summary>
         /// <param name="item"></param>
         public void addItem(Item item)
@@ -40,7 +40,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// add an item by id to the local inventory and to xml
+        /// Add an item by id to the local inventory and to xml
         /// </summary>
         /// <param name="id"></param>
         public bool addItemToInventory(int id)
@@ -74,7 +74,7 @@ namespace TextRPG
         }
 
         /// <summary>
-        /// get item from inventory by name
+        /// Get item from inventory by name
         /// </summary>
         /// <param name="itemName"></param>
         public Item getItemFromName(string itemName)
@@ -97,7 +97,7 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// get a string representation of list of items in inventory 
+        /// Get a string representation of list of items in inventory 
         /// </summary>
         public string getListOfitems()
         {

@@ -16,6 +16,9 @@ namespace TextRPG
             loadNpcs();
         }
 
+        /// <summary>
+        /// Loads npc list from XML
+        /// </summary>
         private void loadNpcs()
         {
             xElem = PersistenceManager.initXML(Properties.Settings.Default.npcFile, "npcs");
@@ -38,6 +41,11 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Add a Character both locally and to XML
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public void addNpc(int id, string name)
         {
             Character c = new Character(name);
@@ -65,12 +73,23 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Add an Character to XML
+        /// </summary>
+        /// <param name="c"></param>
         private void addNpcToXML(int id, Character c)
         {
             xElem.Add(new XElement("npc", new XElement("id", id), new XElement("name", c.name), new XElement("isEnemy", 0)));
             xElem.Save(Properties.Settings.Default.npcFile);
         }
 
+        /// <summary>
+        /// Add an enemy locally and to xml
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="maxHealth"></param>
+        /// <param name="dmg"></param>
         public void addEnemy(int id, string name, float maxHealth, float dmg)
         {
             Enemy c = new Enemy(maxHealth, name, dmg);
@@ -98,18 +117,31 @@ namespace TextRPG
             }
         }
 
-        private void addEnemyToXML(int id, Enemy e)
+        /// <summary>
+        /// Adds an enemy to the XML file
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="enemy"></param>
+        private void addEnemyToXML(int id, Enemy enemy)
         {
-            xElem.Add(new XElement("npc", new XElement("id", id), new XElement("name", e.name), new XElement("maxHealth", e.maxHealth), new XElement("dmg", e.dmg), new XElement("isEnemy", 1)));
+            xElem.Add(new XElement("npc", new XElement("id", id), new XElement("name", enemy.name), new XElement("maxHealth", enemy.maxHealth), new XElement("dmg", enemy.dmg), new XElement("isEnemy", 1)));
             xElem.Save(Properties.Settings.Default.npcFile);
         }
 
+        /// <summary>
+        /// Return an npc by id
+        /// </summary>
+        /// <param name="id"></param>
         public Character getNpc(int id)
         {
             //TO DO: check if item id exists
             return npcs[id];
         }
 
+        /// <summary>
+        /// Return an Enemy by id
+        /// </summary>
+        /// <param name="id"></param>
         public Enemy getEnemy(int id)
         {
             if (npcs[id] is Enemy)
@@ -119,21 +151,42 @@ namespace TextRPG
             return null;
         }
 
+        /// <summary>
+        /// Set the name of an existing npc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public void setNpcName(int id, string name)
         {
             setNpcProperty(id, "name", name);
         }
 
+        /// <summary>
+        /// Set the maximum health of an existing npc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="hp"></param>
         public void setNpcMaxHealth(int id, int hp)
         {
             setNpcProperty(id, "maxHealth", hp);
         }
 
+        /// <summary>
+        /// Set the damage of an existing npc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dmg"></param>
         public void setNpcDmg(int id, int dmg)
         {
             setNpcProperty(id, "dmg", dmg);
         }
 
+        /// <summary>
+        /// Set a property for an existing npc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
         public void setNpcProperty(int id, string property, object value)
         {
             Character c;
@@ -165,7 +218,11 @@ namespace TextRPG
             }
         }
 
-        private bool npcSecurityCheck(Character c)
+        /// <summary>
+        /// Security check for a character
+        /// </summary>
+        /// <param name="character"></param>
+        private bool npcSecurityCheck(Character character)
         {
             //TO-DO: add security checks for npc properties
             return true;
