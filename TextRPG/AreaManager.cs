@@ -43,7 +43,7 @@ namespace TextRPG
             {
                 full += con.Key.ToString() + ": " + areas[con.Value].name + "\n";
             }
-            return full;
+            return full.Substring(0,full.LastIndexOf('\n'));
         }
 
         public Item getCurrAreaItemFromName(string itemName)
