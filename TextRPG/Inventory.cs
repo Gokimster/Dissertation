@@ -49,6 +49,7 @@ namespace TextRPG
             if (i != null)
             {
                 items.Add(i);
+                items[id] = i;
             }
             else
             {
@@ -79,7 +80,17 @@ namespace TextRPG
         /// <param name="itemName"></param>
         public Item getItemFromName(string itemName)
         {
-            foreach(Item i in items)
+            return getItemFromNameInList(itemName, items);
+        }
+
+        /// <summary>
+        /// Get item from a list of items by name
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <param name="items"></param>
+        public Item getItemFromNameInList(string itemName, List<Item> items)
+        {
+            foreach (Item i in items)
             {
                 if (i.name.Equals(itemName, StringComparison.InvariantCultureIgnoreCase))
                 {
@@ -97,15 +108,23 @@ namespace TextRPG
         }
         
         /// <summary>
-        /// Get a string representation of list of items in inventory 
+        /// Get a string representation of inventory items 
         /// </summary>
-        public string getListOfitems()
+        public string getListOfItems()
         {
-            string listOfItems = "";
+            return getListOfItemsIn(items);
+        }
+
+        /// <summary>
+        /// Get a string representation of a list of items
+        /// </summary>
+        protected string getListOfItemsIn(List<Item> items)
+        {
             if(items.Count <= 0)
             {
                 return "Inventory is Empty";
             }
+            string listOfItems = "";
             foreach (Item i in items)
             {
                 if (listOfItems == "")

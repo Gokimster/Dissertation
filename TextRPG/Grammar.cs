@@ -31,7 +31,15 @@ namespace TextRPG
 
             //pick up item
             NonTerminal pickUpCommand = new NonTerminal("pickUpCommand");
-            NonTerminal pickUpOp = new NonTerminal("pickUpOp");            
+            NonTerminal pickUpOp = new NonTerminal("pickUpOp");
+
+            //equip item
+            NonTerminal equipCommand = new NonTerminal("equipCommand");
+            NonTerminal equipOp = new NonTerminal("equipOp");
+
+            //unequip item
+            NonTerminal unequipCommand = new NonTerminal("unequipCommand");
+            NonTerminal unequipOp = new NonTerminal("unequipOp");
 
             //help commands
             NonTerminal helpCommand = new NonTerminal("helpCommand");
@@ -53,7 +61,7 @@ namespace TextRPG
             NonTerminal endScriptCommand = new NonTerminal("endScriptCommand");
 
 
-            command.Rule = moveCommand | pickUpCommand | helpCommand | attackCommand | scriptCommand | endScriptCommand;
+            command.Rule = moveCommand | pickUpCommand | equipCommand | unequipCommand | helpCommand | attackCommand | scriptCommand | endScriptCommand;
             //identifiers
             name.Rule = new IdentifierTerminal("identifier");
             nameString.Rule = name | name + nameString;
@@ -67,6 +75,14 @@ namespace TextRPG
             pickUpOp.Rule = ToTerm("pick up") | "get" | "take";
             pickUpCommand.Rule = pickUpOp +  nameString;
 
+            //equip item
+            equipOp.Rule = ToTerm("equip");
+            equipCommand.Rule = equipOp + nameString;
+
+            //unequip item
+            unequipOp.Rule = ToTerm("unequip");
+            unequipCommand.Rule = unequipOp + nameString;
+
             //attack
             attackOp.Rule = ToTerm("attack") | "engage" | "fight";
             attackCommand.Rule = attackOp + nameString;
@@ -78,7 +94,7 @@ namespace TextRPG
 
             inspectOp.Rule = ToTerm("inspect") | "view" | "show";
             inspectCommand.Rule = inspectOp + nameString;
-            //TO DO: add rule to help command
+
             helpCommand.Rule = inventoryCommand | inspectCommand;
 
             //script commands
@@ -140,6 +156,25 @@ namespace TextRPG
                     GameManager.pickUpItem(s);
                 }
             }
+
+            if (mainNode.Term.Name == "equipCommand")
+            {
+                if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)
+                {
+                    string s = getStringFromNameString(mainNode.ChildNodes[1]);
+                    GameManager.equipItem(s);
+                }
+            }
+
+            if (mainNode.Term.Name == "unequipCommand")
+            {
+                if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)
+                {
+                    string s = getStringFromNameString(mainNode.ChildNodes[1]);
+                    GameManager.unequipItem(s);
+                }
+            }
+
             if (mainNode.Term.Name == "attackCommand")
             {
                 if (mainNode.ChildNodes[1] != null && mainNode.ChildNodes[1].ChildNodes[0] != null)

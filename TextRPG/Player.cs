@@ -21,5 +21,9 @@ namespace TextRPG
             dmg = float.Parse(player.Element("dmg").Value);
             name = player.Element("name").Value;
         }
+
+        {
+            return base.getDmgDone() + PlayerInventory.Instance.getEquippedDmgBonus();
+        }
     }
 }

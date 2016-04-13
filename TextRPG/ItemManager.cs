@@ -36,7 +36,18 @@ namespace TextRPG
             items = new Dictionary<int, Item>();
             foreach (var item in xElem.Elements())
             {
-                Item i = new Item();
+                Item i;
+                if (item.Element("isEquippable")!= null && Int32.Parse(item.Element("isEquippable").Value) == 1)
+                {
+                    i = new EquipItem();
+                    if (item.Element("dmgBonus") != null)
+                    {
+                        ((EquipItem)i).dmgBonus = Int32.Parse(item.Element("dmgBonus").Value);
+                    }
+                }
+                else {
+                    i = new Item();
+                }
                 i.description = item.Element("description").Value;
                 i.name = item.Element("name").Value;
                 items.Add(Int32.Parse(item.Element("id").Value), i);
@@ -140,7 +151,7 @@ namespace TextRPG
         /// <param name="item"></param>
         private void addItemToXML(int id, Item item)
         {
-            xElem.Add(new XElement("item", new XElement("id", id), new XElement("description", item.description), new XElement("name", item.name)));
+            xElem.Add(new XElement("item", new XElement("id", id), new XElement("isEquippable", 0), new XElement("name", item.name), new XElement("description", item.description)));
             xElem.Save(Properties.Settings.Default.itemFile);
         }
         

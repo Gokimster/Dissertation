@@ -28,7 +28,7 @@ namespace TextRPG
 
         public static void showPlayerInventory()
         {
-            GUI.Instance.appendToOutput(PlayerInventory.Instance.getListOfitems());
+            GUI.Instance.appendToOutput(PlayerInventory.Instance.getListOfItems());
         }
 
         public static void pickUpItem(string itemName)
@@ -45,6 +45,31 @@ namespace TextRPG
                 GUI.Instance.appendToOutput("There is no such item here.");
             }
         }
+
+        public static void equipItem(string itemName)
+        {
+            if(PlayerInventory.Instance.equipItem(itemName))
+            {
+                GUI.Instance.appendToOutput("Equipped " + itemName);
+            }
+            else
+            {
+                GUI.Instance.appendToOutput("Could not equip " + itemName);
+            }
+        }
+
+        public static void unequipItem(string itemName)
+        {
+            if (PlayerInventory.Instance.unequipItem(itemName))
+            {
+                GUI.Instance.appendToOutput("Unequipped " + itemName);
+            }
+            else
+            {
+                GUI.Instance.appendToOutput("Could not unequip " + itemName);
+            }
+        }
+
 
         public static Character getNpc(int id)
         {

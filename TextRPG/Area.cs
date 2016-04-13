@@ -40,7 +40,7 @@ namespace TextRPG
         {
             string full = name + "\n";
             full += description + "\n";
-            full += "Items: " + inventory.getListOfitems() + "\n";
+            full += "Items: " + inventory.getListOfItems() + "\n";
             full += getNpcDescriptionList();
             return full;
         }
