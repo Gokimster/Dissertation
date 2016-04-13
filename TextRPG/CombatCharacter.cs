@@ -5,13 +5,7 @@
         public float maxHealth {get; set;}
         public float currHealth { get; set; }
         public float dmg { get; set;}
-
-        public object this[string propertyName]
-        {
-            get { return this.GetType().GetProperty(propertyName).GetValue(this, null); }
-            set { this.GetType().GetProperty(propertyName).SetValue(this, value, null); }
-        }
-
+        
         public CombatCharacter()
         {
 
@@ -69,6 +63,7 @@
 
         protected void doDeath()
         {
+            currHealth = 0;
         }
 
         public bool isDead()
