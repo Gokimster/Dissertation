@@ -10,7 +10,7 @@ namespace TextRPG
         public GUI()
         {
             InitializeComponent();
-            appendToOutput(AreaManager.Instance.getFullAreaDescription(AreaManager.Instance.currentArea));
+            //appendToOutput(AreaManager.Instance.getFullAreaDescription(AreaManager.Instance.currentArea));
         }
 
         /// <summary>

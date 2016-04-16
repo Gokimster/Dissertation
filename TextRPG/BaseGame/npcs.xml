@@ -2,9 +2,31 @@
 <npcs xmlns="urn:lst-emp:emp">
   <npc xmlns="">
     <id>1</id>
-    <name>Wolf</name>
+    <name>Guard</name>
     <maxHealth>20</maxHealth>
     <dmg>5</dmg>
     <isEnemy>1</isEnemy>
+  </npc>
+  <npc xmlns="">
+    <id>2</id>
+    <name>Servant</name>
+  </npc>
+  <npc xmlns="">
+    <id>3</id>
+    <name>Cook</name>
+    <maxHealth>50</maxHealth>
+    <dmg>3</dmg>
+    <isEnemy>1</isEnemy>
+  </npc>
+  <npc xmlns="">
+    <id>4</id>
+    <name>Warrior Leader</name>
+    <maxHealth>50</maxHealth>
+    <dmg>10</dmg>
+    <isEnemy>1</isEnemy>
+  </npc>
+  <npc xmlns="">
+    <id>5</id>
+    <name>Librarian</name>
   </npc>
 </npcs>

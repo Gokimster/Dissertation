@@ -11,6 +11,9 @@ namespace TextRPG
         [STAThread]
         static void Main()
         {
+            ItemManager.Instance.init();
+            NpcManager.Instance.init();
+            AreaManager.Instance.init();
             Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(GUI.Instance);

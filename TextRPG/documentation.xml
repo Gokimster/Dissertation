@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TextRPG</name>
+    </assembly>
+    <members>
+        <member name="M:TextRPG.GUI.input_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handles pressing Enter while in input textbox;
+            add the input to the output;
+            clear input
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:TextRPG.GUI.appendToOutput(System.String,System.Boolean)">
+            <summary>
+            append a string to the output textbox and add a new line after
+            </summary>
+            <param name="s"></param>
+            <param name="fromUser"></param>
+        </member>
+        <member name="M:TextRPG.GUI.clearOutput">
+            <summary>
+            clear the output textbox
+            </summary>
+        </member>
+        <member name="F:TextRPG.GUI.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TextRPG.GUI.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TextRPG.GUI.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:TextRPG.Grammar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TextRPG.Grammar"/> class.
+            </summary>
+        </member>
+        <member name="M:TextRPG.Grammar.displayTree(Irony.Parsing.ParseTreeNode,System.Int32)">
+            <summary>
+            displays the tree from a given node and level
+            </summary>
+        </member>
+        <member name="M:TextRPG.Grammar.parse(System.String)">
+            <summary>
+            Parses a string using the initialized grammar
+            </summary>
+        </member>
+        <member name="M:TextRPG.Inventory.loadInventory(System.Xml.Linq.XElement)">
+            <summary>
+            Loads  inventory from XElement
+            </summary>
+            <param name="elem"></param>
+        </member>
+        <member name="M:TextRPG.Inventory.addItem(TextRPG.Item)">
+            <summary>
+            Add an item to the inventory both locally and to xml
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TextRPG.Inventory.addItemToInventory(System.Int32)">
+            <summary>
+            Add an item by id to the local inventory and to xml
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.Inventory.addItemToXML(TextRPG.Item)">
+            <summary>
+            add an item to inventory in XML
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TextRPG.Inventory.getItemFromName(System.String)">
+            <summary>
+            Get item from inventory by name
+            </summary>
+            <param name="itemName"></param>
+        </member>
+        <member name="M:TextRPG.Inventory.getItemFromNameInList(System.String,System.Collections.Generic.List{TextRPG.Item})">
+            <summary>
+            Get item from a list of items by name
+            </summary>
+            <param name="itemName"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:TextRPG.Inventory.getListOfItems">
+            <summary>
+            Get a string representation of inventory items 
+            </summary>
+        </member>
+        <member name="M:TextRPG.Inventory.getListOfItemsIn(System.Collections.Generic.List{TextRPG.Item})">
+            <summary>
+            Get a string representation of a list of items
+            </summary>
+        </member>
+        <member name="M:TextRPG.ItemManager.getItem(System.Int32)">
+            <summary>
+            Get item by id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.ItemManager.loadItems">
+            <summary>
+            Load all items from xml
+            </summary>
+        </member>
+        <member name="M:TextRPG.ItemManager.addItem(System.Int32,System.String,System.String)">
+            <summary>
+            Add an item both locally and to xml
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:TextRPG.ItemManager.setItemName(System.Int32,System.String)">
+            <summary>
+            Set the name of an existing item
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.ItemManager.setItemDescription(System.Int32,System.String)">
+            <summary>
+            Set the description of an existing item
+            </summary>
+            <param name="id"></param>
+            <param name="desc"></param>
+        </member>
+        <member name="M:TextRPG.ItemManager.setItemProperty(System.Int32,System.String,System.Object)">
+            <summary>
+            Set a property of an existing item
+            </summary>
+            <param name="id"></param>
+            <param name="property"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TextRPG.ItemManager.addItemToXML(System.Int32,TextRPG.Item)">
+            <summary>
+            Add an item to xml
+            </summary>
+            <param name="id"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:TextRPG.ItemManager.itemSecurityCheck(TextRPG.Item)">
+            <summary>
+            Security check for an item
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:TextRPG.LuaManager.executeCommand(System.String)">
+            <summary>
+            Try to execute a Lua command given in a string
+            </summary>
+            <param name="luaCommand"></param>
+        </member>
+        <member name="M:TextRPG.LuaManager.startScript(System.String)">
+            <summary>
+            Start recording a lua script with a specific name
+            </summary>
+            <param name="scriptName"></param>
+        </member>
+        <member name="M:TextRPG.LuaManager.endScript">
+            <summary>
+            Finalise a user created script by writing it to file
+            </summary>
+        </member>
+        <member name="M:TextRPG.LuaManager.appendToScript(System.String)">
+            <summary>
+            Append a string to the existing current lua script
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:TextRPG.LuaManager.executeScript(System.String)">
+            <summary>
+            Execute a script from file by name
+            </summary>
+            <param name="scriptName"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.loadNpcs">
+            <summary>
+            Loads npc list from XML
+            </summary>
+        </member>
+        <member name="M:TextRPG.NpcManager.addNpc(System.Int32,System.String)">
+            <summary>
+            Add a Character both locally and to XML
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.addNpcToXML(System.Int32,TextRPG.Character)">
+            <summary>
+            Add an Character to XML
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.addEnemy(System.Int32,System.String,System.Single,System.Single)">
+            <summary>
+            Add an enemy locally and to xml
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="maxHealth"></param>
+            <param name="dmg"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.addEnemyToXML(System.Int32,TextRPG.Enemy)">
+            <summary>
+            Adds an enemy to the XML file
+            </summary>
+            <param name="id"></param>
+            <param name="enemy"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.getNpc(System.Int32)">
+            <summary>
+            Return an npc by id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.getEnemy(System.Int32)">
+            <summary>
+            Return an Enemy by id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.setNpcName(System.Int32,System.String)">
+            <summary>
+            Set the name of an existing npc
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.setNpcMaxHealth(System.Int32,System.Single)">
+            <summary>
+            Set the maximum health of an existing npc
+            </summary>
+            <param name="id"></param>
+            <param name="hp"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.setNpcDmg(System.Int32,System.Single)">
+            <summary>
+            Set the damage of an existing npc
+            </summary>
+            <param name="id"></param>
+            <param name="dmg"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.setNpcProperty(System.Int32,System.String,System.Object)">
+            <summary>
+            Set a property for an existing npc
+            </summary>
+            <param name="id"></param>
+            <param name="property"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TextRPG.NpcManager.npcSecurityCheck(TextRPG.Character)">
+            <summary>
+            Security check for a character
+            </summary>
+            <param name="character"></param>
+        </member>
+        <member name="M:TextRPG.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:TextRPG.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TextRPG.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TextRPG.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:TextRPG.Properties.Resources.Logo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+    </members>
+</doc>

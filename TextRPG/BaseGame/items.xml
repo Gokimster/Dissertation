@@ -2,22 +2,36 @@
 <items xmlns="urn:lst-emp:emp">
   <item xmlns="">
     <id>1</id>
+    <isEquippable>1</isEquippable>
     <name>Knife</name>
-    <description>A sturdy knife</description>
+    <description>A sturdy knife which can be equipped.</description>
+    <dmgBonus>3</dmgBonus>
   </item>
   <item xmlns="">
     <id>2</id>
-    <name>Book</name>
-    <description>A Generic Book</description>
+    <name>Tome of Akanog</name>
+    <description>A beautiful tome. Gold writing on the cover reads "Tome of Akanog". The book describes the teachings of the First Enchanter Akanog, long lost to the world when the Enchanter Guild that he founded was attacked by the Lunar Knights who burned their tower, including the library to the ground. </description>
   </item>
   <item xmlns="">
     <id>3</id>
-    <name>Broken Sword</name>
-    <description>A broken sword</description>
+    <name>Broken Candle</name>
+    <description>A broken candle.</description>
   </item>
   <item xmlns="">
-    <id>10</id>
-    <name>Chainsaw</name>
-    <description>A heavy chainsaw</description>
+    <id>4</id>
+    <name>Cake</name>
+    <description>A large fruit cake.</description>
+  </item>
+  <item xmlns="">
+    <id>5</id>
+    <isEquippable>1</isEquippable>
+    <name>Butcher Knife</name>
+    <description>A large butcher knife which can be equipped.</description>
+    <dmgBonus>6</dmgBonus>
+  </item>
+  <item xmlns="">
+    <id>6</id>
+    <name>Big Ruby</name>
+    <description>A large ruby that sparkles at the touch of light.</description>
   </item>
 </items>

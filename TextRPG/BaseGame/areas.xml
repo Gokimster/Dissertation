@@ -2,7 +2,8 @@
 <areas xmlns="urn:lst-emp:emp">
   <area xmlns="">
     <id>1</id>
-    <description>A quiet room</description>
+    <name>Fortress Entry Hall</name>
+    <description>The Entrance to an imposing fortress. This is where your adventure to find the lost Tome of Akanog begins. It is also rumored that treasure lies deep in the fortress.</description>
     <connections xmlns="">
       <connection xmlns="">
         <con>N</con>
@@ -13,34 +14,21 @@
         <area>3</area>
       </connection>
     </connections>
-    <name>Living Room</name>
-    <items>
-      <item>
-        <id>10</id>
-      </item>
-    </items>
   </area>
   <area xmlns="">
     <id>2</id>
-    <description>A bed is in the middle of the room, a wardrobe hangs to the right</description>
+    <name>Long Hallway</name>
+    <description>A long hallway leading to a large wooden door. There are red banners with a black dragon one the walls. Something seems to be guarding the road ahead.</description>
     <connections xmlns="">
       <connection xmlns="">
         <con>S</con>
         <area>1</area>
       </connection>
+      <connection xmlns="">
+        <con>N</con>
+        <area>4</area>
+      </connection>
     </connections>
-    <items>
-      <item>
-        <id>1</id>
-      </item>
-      <item>
-        <id>3</id>
-      </item>
-      <item>
-        <id>2</id>
-      </item>
-    </items>
-    <name>Bedroom</name>
     <npcs>
       <npc>
         <id>1</id>
@@ -49,8 +37,8 @@
   </area>
   <area xmlns="">
     <id>3</id>
-    <description>Bathroom</description>
-    <name />
+    <name>Small Room</name>
+    <description>A really small dark room. When you upen the door, something on the floor seems to have twinkled.</description>
     <connections>
       <connection>
         <con>W</con>
@@ -59,8 +47,107 @@
     </connections>
     <items>
       <item>
+        <id>1</id>
+      </item>
+    </items>
+  </area>
+  <area xmlns="">
+    <id>4</id>
+    <name>Dining Hall</name>
+    <description>A large dining hall. Someone seems to be prepairing the tables for a feast.</description>
+    <connections>
+      <connection>
+        <con>S</con>
+        <area>2</area>
+      </connection>
+      <connection>
+        <con>N</con>
+        <area>6</area>
+      </connection>
+      <connection>
+        <con>W</con>
+        <area>5</area>
+      </connection>
+    </connections>
+    <items>
+      <item>
         <id>3</id>
       </item>
     </items>
+    <npcs>
+      <npc>
+        <id>2</id>
+      </npc>
+    </npcs>
+  </area>
+  <area xmlns="">
+    <id>5</id>
+    <name>Kitchen</name>
+    <description>A small kitchen. A arge wooden table is in the middle of the room. Someone seems to preparing a treat</description>
+    <connections>
+      <connection>
+        <con>E</con>
+        <area>4</area>
+      </connection>
+    </connections>
+    <items>
+      <item>
+        <id>4</id>
+      </item>
+        <item>
+          <id>5</id>
+        </item>
+    </items>
+    <npcs>
+      <npc>
+        <id>3</id>
+      </npc>
+    </npcs>
+  </area>
+  <area xmlns="">
+    <id>6</id>
+    <name>Throne Room</name>
+    <description>The main room of the fortress. A beautiful chandellier hangs above a marble throne adorned with thousands of rubies. There is a particular large gem at the top of the throne on which someone sits, looking at you curiously.</description>
+    <connections>
+      <connection>
+        <con>S</con>
+        <area>4</area>
+      </connection>
+      <connection>
+        <con>W</con>
+        <area>7</area>
+      </connection>
+    </connections>
+    <items>
+      <item>
+        <id>6</id>
+      </item>
+    </items>
+    <npcs>
+      <npc>
+        <id>4</id>
+      </npc>
+    </npcs>
+  </area>
+  <area xmlns="">
+    <id>7</id>
+    <name>Library</name>
+    <description>A rather large library full of books. In the middle in a display case there is a large book.</description>
+    <connections>
+      <connection>
+        <con>E</con>
+        <area>6</area>
+      </connection>
+    </connections>
+    <items>
+      <item>
+        <id>2</id>
+      </item>
+    </items>
+    <npcs>
+      <npc>
+        <id>6</id>
+      </npc>
+    </npcs>
   </area>
 </areas>

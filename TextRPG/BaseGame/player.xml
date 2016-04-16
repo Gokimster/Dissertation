@@ -2,8 +2,8 @@
 <players xmlns="urn:lst-emp:emp">
 	<player xmlns="">
 		<name>Player</name>
-		<maxHealth>50</maxHealth>
-		<dmg>5</dmg>
+		<maxHealth>100</maxHealth>
+		<dmg>10</dmg>
 		<items>
 		</items>
 	</player>

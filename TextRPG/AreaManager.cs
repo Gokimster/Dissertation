@@ -13,9 +13,15 @@ namespace TextRPG
         public static readonly AreaManager Instance = new AreaManager();
         public AreaManager()
         {
+        }
+
+        public void init()
+        {
             loadAreas();
             currentArea = areas.Values.First();
+            GameManager.showFullAreaDescription();
         }
+
 
         public bool changeCurrentArea(string direction)
         {

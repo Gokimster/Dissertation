@@ -13,6 +13,10 @@ namespace TextRPG
 
         public ItemManager()
         {
+        }
+
+        public void init()
+        {
             loadItems();
         }
 

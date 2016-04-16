@@ -79,7 +79,7 @@ namespace TextRPG
             {
                 if (id == Int32.Parse(npc.Element("id").Value))
                 {
-                    if (Int32.Parse(npc.Element("isEnemy").Value) == 0)
+                    if (npc.Element("isEnemy") == null || (npc.Element("isEnemy") == null && Int32.Parse(npc.Element("isEnemy").Value) == 0))
                     {
                         c = new Character(npc.Element("name").Value);
                     }

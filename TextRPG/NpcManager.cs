@@ -13,6 +13,10 @@ namespace TextRPG
 
         public NpcManager()
         {
+        }
+
+        public void init()
+        {
             loadNpcs();
         }
 
@@ -26,7 +30,7 @@ namespace TextRPG
             foreach (var npc in xElem.Elements())
             {
                 Character c;
-                if (Int32.Parse(npc.Element("isEnemy").Value) == 0)
+                if (npc.Element("isEnemy") == null || (npc.Element("isEnemy")!=null && Int32.Parse(npc.Element("isEnemy").Value) == 0))
                 {
                     c = new Character();
                 }
@@ -166,7 +170,7 @@ namespace TextRPG
         /// </summary>
         /// <param name="id"></param>
         /// <param name="hp"></param>
-        public void setNpcMaxHealth(int id, int hp)
+        public void setNpcMaxHealth(int id, float hp)
         {
             setNpcProperty(id, "maxHealth", hp);
         }
@@ -176,7 +180,7 @@ namespace TextRPG
         /// </summary>
         /// <param name="id"></param>
         /// <param name="dmg"></param>
-        public void setNpcDmg(int id, int dmg)
+        public void setNpcDmg(int id, float dmg)
         {
             setNpcProperty(id, "dmg", dmg);
         }
@@ -193,23 +197,30 @@ namespace TextRPG
             if (npcs.TryGetValue(id, out c))
             {
                 Character temp = c;
-                temp[property] = value;
-                if (npcSecurityCheck(temp))
+                try
                 {
-                    var ch = from npc in xElem.Elements("npc")
-                             where (int)npc.Element("id") == id
-                             select npc;
-                    foreach (XElement xel in ch)
+                    temp[property] = value;
+                    if (npcSecurityCheck(temp))
                     {
-                        xel.Element(property).SetValue(value);
+                        var ch = from npc in xElem.Elements("npc")
+                                 where (int)npc.Element("id") == id
+                                 select npc;
+                        foreach (XElement xel in ch)
+                        {
+                            xel.Element(property).SetValue(value);
+                        }
+                        c[property] = value;
+                        xElem.Save(Properties.Settings.Default.npcFile);
+                        GUI.Instance.appendToOutput("Npc " + property + " changed to " + value.ToString());
                     }
-                    c[property] = value;
-                    xElem.Save(Properties.Settings.Default.npcFile);
-                    GUI.Instance.appendToOutput("Npc " + property + " changed to " + value.ToString());
+                    else
+                    {
+                        GUI.Instance.appendToOutput("Could not change the npc " + property);
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    GUI.Instance.appendToOutput("Could not change the npc " + property);
+                    GUI.Instance.appendToOutput("The npc does not have the following property: " + property);
                 }
             }
             else
