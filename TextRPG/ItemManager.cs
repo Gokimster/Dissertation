@@ -155,7 +155,7 @@ namespace TextRPG
         /// <param name="item"></param>
         private void addItemToXML(int id, Item item)
         {
-            xElem.Add(new XElement("item", new XElement("id", id), new XElement("isEquippable", 0), new XElement("name", item.name), new XElement("description", item.description)));
+            xElem.Add(new XElement("item", new XElement("id", id), new XElement("name", item.name), new XElement("description", item.description)));
             xElem.Save(Properties.Settings.Default.itemFile);
         }
         

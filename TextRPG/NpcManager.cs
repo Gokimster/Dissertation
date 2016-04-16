@@ -83,7 +83,7 @@ namespace TextRPG
         /// <param name="c"></param>
         private void addNpcToXML(int id, Character c)
         {
-            xElem.Add(new XElement("npc", new XElement("id", id), new XElement("name", c.name), new XElement("isEnemy", 0)));
+            xElem.Add(new XElement("npc", new XElement("id", id), new XElement("name", c.name)));
             xElem.Save(Properties.Settings.Default.npcFile);
         }
 

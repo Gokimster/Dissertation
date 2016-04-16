@@ -49,7 +49,7 @@ namespace TextRPG
             if (i != null)
             {
                 items.Add(i);
-                items[id] = i;
+                //items[id] = i;
             }
             else
             {
