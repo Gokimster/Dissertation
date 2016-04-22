@@ -13,12 +13,19 @@ namespace TextRPG
             loadInventory();
         }
 
+        /// <summary>
+        /// Load player inventory from XML
+        /// </summary>
         private void loadInventory()
         {
             xElem = PersistenceManager.initXML(Properties.Settings.Default.playerFile, "player");
             base.loadInventory(xElem.Element("player"));
         }
 
+        /// <summary>
+        /// Equip an item by name
+        /// </summary>
+        /// <param name="name"></param>
         public bool equipItem(string name)
         {
             Item i = getItemFromName(name);
@@ -31,11 +38,19 @@ namespace TextRPG
             return false;
         }
 
+        /// <summary>
+        /// Get an item that is equipped by name
+        /// </summary>
+        /// <param name="name"></param>
         public Item getEquippedItemByName(string name)
         {
             return getItemFromNameInList(name, equippedItems);
         }
 
+        /// <summary>
+        /// Unequip an item by name
+        /// </summary>
+        /// <param name="name"></param>
         public bool unequipItem(string name)
         {
             Item i = getEquippedItemByName(name);
@@ -48,6 +63,10 @@ namespace TextRPG
             return false;
         }
 
+        /// <summary>
+        /// Get the damage bonus provided by all equipped items
+        /// </summary>
+        /// <param name="name"></param>
         public float getEquippedDmgBonus()
         {
             float bonus = 0;
@@ -58,6 +77,10 @@ namespace TextRPG
             return bonus;
         }
 
+        /// <summary>
+        /// Get a list of all items in inventory
+        /// </summary>
+        /// <param name="name"></param>
         public string getListOfItems()
         {
             string list = "";

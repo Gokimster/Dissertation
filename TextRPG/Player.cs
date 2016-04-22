@@ -12,6 +12,9 @@ namespace TextRPG
             loadCharacter();
         }
 
+        /// <summary>
+        /// Load player data from XML
+        /// </summary>
         private void loadCharacter()
         {
             XElement xElem = PersistenceManager.initXML(Properties.Settings.Default.playerFile, "players");
@@ -22,6 +25,9 @@ namespace TextRPG
             name = player.Element("name").Value;
         }
 
+        /// <summary>
+        /// Get the damage that the player does
+        /// </summary>
         new public float getDmgDone()
         {
             return base.getDmgDone() + PlayerInventory.Instance.getEquippedDmgBonus();

@@ -213,6 +213,7 @@ namespace TextRPG
         /// <summary>
         /// Parses a string using the initialized grammar
         /// </summary>
+        /// <param name="s"></param>
         public bool parse(String s)
         {
             LanguageData language = new LanguageData(this);

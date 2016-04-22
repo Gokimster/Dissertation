@@ -28,6 +28,10 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Do a certain combat phase
+        /// </summary>
+        /// <param name="phase"></param>
         public void doPhase(int phase)
         {
             string scriptFile;
@@ -37,6 +41,10 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Remove combat script associated with a function
+        /// </summary>
+        /// <param name="function"></param>
         public void removeScriptForFunction(string function)
         {
             scripts.Remove(function);
@@ -50,6 +58,11 @@ namespace TextRPG
             xElem.Save(Properties.Settings.Default.combatScriptsFile);
         }
 
+        /// <summary>
+        /// Associate a combat script to a combat function
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="script"></param>
         public void addScriptToFunction(string function, string script)
         {
             removeScriptForFunction(function);
@@ -58,6 +71,10 @@ namespace TextRPG
             xElem.Save(Properties.Settings.Default.combatScriptsFile);
         }
 
+        /// <summary>
+        /// Do the combat behaviour with an enemy
+        /// </summary>
+        /// <param name="e"></param>
         public void doCombat(Enemy e)
         {
             string scriptFile;
@@ -72,6 +89,10 @@ namespace TextRPG
             enemy = null;
         }
 
+        /// <summary>
+        /// Do combat in phases
+        /// </summary>
+        /// <param name="noOfPhases"></param>
         public void fightInPhases(int noOfPhases)
         {
             for(int i = 0; i <noOfPhases; i++)
@@ -80,6 +101,9 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Fight till death behaviour with simultanous attack phases
+        /// </summary>
         public void fightTillDeath()
         {
             while (!enemy.isDead() && !Player.Instance.isDead())
@@ -88,6 +112,9 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Do player attack behaviour
+        /// </summary>
         public void playerAttack()
         {
             string scriptFile;
@@ -100,11 +127,23 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Do player defend behaviour
+        /// </summary>
         public void playerDefend()
         {
-
+            string scriptFile;
+            if (scripts.TryGetValue("playerDefend", out scriptFile))
+            {
+                LuaManager.executeScript(scriptFile);
+            }
+            else {
+            }
         }
 
+        /// <summary>
+        /// do enemy attack behaviour
+        /// </summary>
         public void enemyAttack()
         {
             string scriptFile;
@@ -117,6 +156,9 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Do enemy defend behaviour
+        /// </summary>
         public void enemyDefend()
         {
             string scriptFile;
@@ -128,7 +170,9 @@ namespace TextRPG
             }
         }
 
-
+        /// <summary>
+        /// Simultaneous attack by enemy and player
+        /// </summary>
         public void attackPhaseSimultaneous()
         {
             playerAttack();

@@ -15,6 +15,9 @@ namespace TextRPG
         {
         }
 
+        /// <summary>
+        /// Initialise the AreaManager
+        /// </summary>
         public void init()
         {
             loadAreas();
@@ -22,7 +25,10 @@ namespace TextRPG
             GameManager.showFullAreaDescription();
         }
 
-
+        /// <summary>
+        /// Change the current area to the one in a certain direction
+        /// </summary>
+        /// <param name="direction"></param>
         public bool changeCurrentArea(string direction)
         {
             int areaId = currentArea.getAreaIdAt(direction);
@@ -35,12 +41,20 @@ namespace TextRPG
             return true;
         }
 
+        /// <summary>
+        /// Set the current area to the area with a certain id
+        /// </summary>
+        /// <param name="areaId"></param>
         public void setCurrentArea(int areaId)
         {
             currentArea = areas[areaId];
             GameManager.showFullAreaDescription();
         }
 
+        /// <summary>
+        /// Return the full description of an area
+        /// </summary>
+        /// <param name="a"></param>
         public string getFullAreaDescription(Area a)
         {
             string full = a.getFullDescription();
@@ -52,11 +66,19 @@ namespace TextRPG
             return full.Substring(0,full.LastIndexOf('\n'));
         }
 
+        /// <summary>
+        /// Get an item in the current area by name
+        /// </summary>
+        /// <param name="itemName"></param>
         public Item getCurrAreaItemFromName(string itemName)
         {
             return currentArea.getItemFromName(itemName);
         }
 
+        /// <summary>
+        /// Get an enemy in the current area by name
+        /// </summary>
+        /// <param name="enemyName"></param>
         public Enemy getCurrAreaEnemyFromName(string enemyName)
         {
             return currentArea.getEnemyFromName(enemyName);
@@ -65,7 +87,7 @@ namespace TextRPG
         //============================
         //XML Operations
         //============================
-
+        
         private void loadAreas()
         {
             xElem = PersistenceManager.initXML(Properties.Settings.Default.areaFile, "areas");
@@ -96,6 +118,12 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Add an area
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
         public void addArea(int id, string name, string description)
         {
             Area a = new Area();
@@ -131,6 +159,12 @@ namespace TextRPG
             xElem.Save(Properties.Settings.Default.areaFile);
         }
 
+        /// <summary>
+        /// Add a connection from an area to another in a certain direction
+        /// </summary>
+        /// <param name="areaId"></param>
+        /// <param name="connection"></param>
+        /// <param name="connectingAreaId"></param>
         public void addConnectionToArea(int areaId, string connection, int connectingAreaId)
         {
             var ar = from area in xElem.Elements("area")
@@ -164,6 +198,11 @@ namespace TextRPG
             xElem.Save(Properties.Settings.Default.areaFile);
         }
 
+        /// <summary>
+        /// Add an item to an area
+        /// </summary>
+        /// <param name="areaId"></param>
+        /// <param name="itemId"></param>
         public void addItemToArea(int areaId, int itemId)
         {
             var ar = from area in xElem.Elements("area")
@@ -188,6 +227,11 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Add an NPC to an area
+        /// </summary>
+        /// <param name="areaId"></param>
+        /// <param name="npcId"></param>
         public void addNpcToArea(int areaId, int npcId)
         {
             var ar = from area in xElem.Elements("area")
@@ -213,16 +257,32 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Set the name of an area
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public void setAreaName(int id, string name)
         {
             setAreaProperty(id, "name", name);
         }
 
+        /// <summary>
+        /// Set the descirpition of an area
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="desc"></param>
         public void setAreaDescription(int id, string desc)
         {
             setAreaProperty(id, "description", desc);
         }
 
+        /// <summary>
+        /// Set a property of an area
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="property"></param>
+        /// <param name="value"></param>
         public void setAreaProperty(int id, string property, object value)
         {
             Area a;

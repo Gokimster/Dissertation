@@ -5,13 +5,12 @@ namespace TextRPG
 {
     public static class PersistenceManager
     {
-
-        //----------------------------------------//
-        //----------Methods-----------------------//
-        //----------------------------------------//
-
-        //creates a new document, initialize it as an xml adn save it 
-        //with a given name
+        /// <summary>
+        /// creates a new document, initialize it as an xml adn save it 
+        /// with a given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="mainElemName"></param>
         public static void createXMLDoc(string name,string mainElemName)
         {
             XNamespace empNM = "urn:lst-emp:emp";
@@ -24,7 +23,11 @@ namespace TextRPG
             xDoc.Save(name);
         }
 
-        //initialize the fields and load the xml file or create it if it doesn't exist
+        /// <summary>
+        /// initialize the fields and load the xml file or create it if it doesn't exist
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="mainElemName"></param>
         public static XElement initXML(string name, string mainElemName)
         {
             XElement xmlElem;

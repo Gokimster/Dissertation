@@ -4,6 +4,346 @@
         <name>TextRPG</name>
     </assembly>
     <members>
+        <member name="M:TextRPG.Area.loadAreaInventory(System.Xml.Linq.XElement)">
+            <summary>
+            Load area inventory
+            </summary>
+            <param name="elem"></param>
+        </member>
+        <member name="M:TextRPG.Area.getFullDescription">
+            <summary>
+            Return the full description of this area
+            </summary>
+        </member>
+        <member name="M:TextRPG.Area.getNpcDescriptionList">
+            <summary>
+            Return a string list of all NPCs in the area
+            </summary>
+        </member>
+        <member name="M:TextRPG.Area.addConnection(System.String,System.Int32)">
+            <summary>
+            Add a connection to an area by id
+            </summary>
+            <param name="connection"></param>
+            <param name="connectingAreaId"></param>
+        </member>
+        <member name="M:TextRPG.Area.addNpc(System.Int32)">
+            <summary>
+            Add an NPC to the area
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.Area.addItem(System.Int32)">
+            <summary>
+            Add an item to the area by id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.Area.getEnemyFromName(System.String)">
+            <summary>
+            Get an enemy in the area by name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.Area.getAreaIdAt(System.String)">
+            <summary>
+            Returns the id of the area connecnted to this area througha  given connection as a string
+            </summary>
+            <param name="connection"></param>
+        </member>
+        <member name="M:TextRPG.Area.getAreaIdAt(TextRPG.Area.AreaConnection)">
+            <summary>
+            Returns the id of the area connecnted to this area througha  given connection as an AreaConnection 
+            </summary>
+            <param name="connection"></param>
+        </member>
+        <member name="M:TextRPG.Area.getItemFromName(System.String)">
+            <summary>
+            Return item in area by name
+            </summary>
+            <param name="itemName"></param>
+        </member>
+        <member name="M:TextRPG.Area.removeItem(TextRPG.Item)">
+            <summary>
+            Remove item from inventory
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:TextRPG.Area.getConnectionFromString(System.String)">
+            <summary>
+            Return AreaConnection corresponding to a string
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:TextRPG.Area.getOpposingConnectionString(System.String)">
+            <summary>
+            Return the opposing area connection to a connection by string
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.init">
+            <summary>
+            Initialise the AreaManager
+            </summary>
+        </member>
+        <member name="M:TextRPG.AreaManager.changeCurrentArea(System.String)">
+            <summary>
+            Change the current area to the one in a certain direction
+            </summary>
+            <param name="direction"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.setCurrentArea(System.Int32)">
+            <summary>
+            Set the current area to the area with a certain id
+            </summary>
+            <param name="areaId"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.getFullAreaDescription(TextRPG.Area)">
+            <summary>
+            Return the full description of an area
+            </summary>
+            <param name="a"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.getCurrAreaItemFromName(System.String)">
+            <summary>
+            Get an item in the current area by name
+            </summary>
+            <param name="itemName"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.getCurrAreaEnemyFromName(System.String)">
+            <summary>
+            Get an enemy in the current area by name
+            </summary>
+            <param name="enemyName"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.addArea(System.Int32,System.String,System.String)">
+            <summary>
+            Add an area
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.addConnectionToArea(System.Int32,System.String,System.Int32)">
+            <summary>
+            Add a connection from an area to another in a certain direction
+            </summary>
+            <param name="areaId"></param>
+            <param name="connection"></param>
+            <param name="connectingAreaId"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.addItemToArea(System.Int32,System.Int32)">
+            <summary>
+            Add an item to an area
+            </summary>
+            <param name="areaId"></param>
+            <param name="itemId"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.addNpcToArea(System.Int32,System.Int32)">
+            <summary>
+            Add an NPC to an area
+            </summary>
+            <param name="areaId"></param>
+            <param name="npcId"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.setAreaName(System.Int32,System.String)">
+            <summary>
+            Set the name of an area
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.setAreaDescription(System.Int32,System.String)">
+            <summary>
+            Set the descirpition of an area
+            </summary>
+            <param name="id"></param>
+            <param name="desc"></param>
+        </member>
+        <member name="M:TextRPG.AreaManager.setAreaProperty(System.Int32,System.String,System.Object)">
+            <summary>
+            Set a property of an area
+            </summary>
+            <param name="id"></param>
+            <param name="property"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.heal(System.Single)">
+            <summary>
+            Heal the character by a number of points
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.modifyHeal(System.Single)">
+            <summary>
+            Return the point amount of a heal after modifying it taking into acount stats
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.takeDmg(System.Single)">
+            <summary>
+            Take a number of points of damage
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.getDmgDone">
+            <summary>
+            Return the damage done by the character
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.modifyDmgTaken(System.Single)">
+            <summary>
+            Return the points of damage taken after modifications based on stats
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.modifyDmgDone(System.Single)">
+            <summary>
+            Return the points of damage done after modifications based on stats
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.doDeath">
+            <summary>
+            Do the death behaviour of a character
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatCharacter.isDead">
+            <summary>
+            Check if a character is dead or not
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatManager.doPhase(System.Int32)">
+            <summary>
+            Do a certain combat phase
+            </summary>
+            <param name="phase"></param>
+        </member>
+        <member name="M:TextRPG.CombatManager.removeScriptForFunction(System.String)">
+            <summary>
+            Remove combat script associated with a function
+            </summary>
+            <param name="function"></param>
+        </member>
+        <member name="M:TextRPG.CombatManager.addScriptToFunction(System.String,System.String)">
+            <summary>
+            Associate a combat script to a combat function
+            </summary>
+            <param name="function"></param>
+            <param name="script"></param>
+        </member>
+        <member name="M:TextRPG.CombatManager.doCombat(TextRPG.Enemy)">
+            <summary>
+            Do the combat behaviour with an enemy
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:TextRPG.CombatManager.fightInPhases(System.Int32)">
+            <summary>
+            Do combat in phases
+            </summary>
+            <param name="noOfPhases"></param>
+        </member>
+        <member name="M:TextRPG.CombatManager.fightTillDeath">
+            <summary>
+            Fight till death behaviour with simultanous attack phases
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatManager.playerAttack">
+            <summary>
+            Do player attack behaviour
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatManager.playerDefend">
+            <summary>
+            Do player defend behaviour
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatManager.enemyAttack">
+            <summary>
+            do enemy attack behaviour
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatManager.enemyDefend">
+            <summary>
+            Do enemy defend behaviour
+            </summary>
+        </member>
+        <member name="M:TextRPG.CombatManager.attackPhaseSimultaneous">
+            <summary>
+            Simultaneous attack by enemy and player
+            </summary>
+        </member>
+        <member name="M:TextRPG.GameManager.changeCurrentArea(System.String)">
+            <summary>
+            Change the current area to the one connecting to it by a given string connection
+            </summary>
+            <param name="direction"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.showAreaDescription">
+            <summary>
+            Show the area description of the current area
+            </summary>
+        </member>
+        <member name="M:TextRPG.GameManager.showFullAreaDescription">
+            <summary>
+            Show the full area description of the current area
+            </summary>
+        </member>
+        <member name="M:TextRPG.GameManager.noAreaInDirection(System.String)">
+            <summary>
+            Output if there is no area in a direction
+            </summary>
+            <param name="direction"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.showPlayerInventory">
+            <summary>
+            Show player inventory
+            </summary>
+        </member>
+        <member name="M:TextRPG.GameManager.pickUpItem(System.String)">
+            <summary>
+            Pick up an item by name
+            </summary>
+            <param name="itemName"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.equipItem(System.String)">
+            <summary>
+            Equip an item by name
+            </summary>
+            <param name="itemName"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.unequipItem(System.String)">
+            <summary>
+            Unequip an item by name
+            </summary>
+            <param name="itemName"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.getNpc(System.Int32)">
+            <summary>
+            Return an NPC from XML by ID
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.getItem(System.Int32)">
+            <summary>
+            Return an item from XML by id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.inspect(System.String)">
+            <summary>
+            Inspect an item by name - show its description
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:TextRPG.GameManager.doCombat(System.String)">
+            <summary>
+            Do combat with an enemy by name
+            </summary>
+            <param name="s"></param>
+        </member>
         <member name="M:TextRPG.GUI.input_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
             <summary>
             Handles pressing Enter while in input textbox;
@@ -56,6 +396,7 @@
             <summary>
             Parses a string using the initialized grammar
             </summary>
+            <param name="s"></param>
         </member>
         <member name="M:TextRPG.Inventory.loadInventory(System.Xml.Linq.XElement)">
             <summary>
@@ -102,6 +443,11 @@
         <member name="M:TextRPG.Inventory.getListOfItemsIn(System.Collections.Generic.List{TextRPG.Item})">
             <summary>
             Get a string representation of a list of items
+            </summary>
+        </member>
+        <member name="M:TextRPG.ItemManager.init">
+            <summary>
+            Initialise the item manager
             </summary>
         </member>
         <member name="M:TextRPG.ItemManager.getItem(System.Int32)">
@@ -267,6 +613,66 @@
             Security check for a character
             </summary>
             <param name="character"></param>
+        </member>
+        <member name="M:TextRPG.PersistenceManager.createXMLDoc(System.String,System.String)">
+            <summary>
+            creates a new document, initialize it as an xml adn save it 
+            with a given name
+            </summary>
+            <param name="name"></param>
+            <param name="mainElemName"></param>
+        </member>
+        <member name="M:TextRPG.PersistenceManager.initXML(System.String,System.String)">
+            <summary>
+            initialize the fields and load the xml file or create it if it doesn't exist
+            </summary>
+            <param name="name"></param>
+            <param name="mainElemName"></param>
+        </member>
+        <member name="M:TextRPG.Player.loadCharacter">
+            <summary>
+            Load player data from XML
+            </summary>
+        </member>
+        <member name="M:TextRPG.Player.getDmgDone">
+            <summary>
+            Get the damage that the player does
+            </summary>
+        </member>
+        <member name="M:TextRPG.PlayerInventory.loadInventory">
+            <summary>
+            Load player inventory from XML
+            </summary>
+        </member>
+        <member name="M:TextRPG.PlayerInventory.equipItem(System.String)">
+            <summary>
+            Equip an item by name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.PlayerInventory.getEquippedItemByName(System.String)">
+            <summary>
+            Get an item that is equipped by name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.PlayerInventory.unequipItem(System.String)">
+            <summary>
+            Unequip an item by name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.PlayerInventory.getEquippedDmgBonus">
+            <summary>
+            Get the damage bonus provided by all equipped items
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:TextRPG.PlayerInventory.getListOfItems">
+            <summary>
+            Get a list of all items in inventory
+            </summary>
+            <param name="name"></param>
         </member>
         <member name="M:TextRPG.Program.Main">
             <summary>

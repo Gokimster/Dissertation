@@ -31,11 +31,18 @@ namespace TextRPG
             this.description = description;
         }
 
+        /// <summary>
+        /// Load area inventory
+        /// </summary>
+        /// <param name="elem"></param>
         public void loadAreaInventory(XElement elem)
         {
             inventory.loadInventory(elem);
         }
 
+        /// <summary>
+        /// Return the full description of this area
+        /// </summary>
         public string getFullDescription()
         {
             string full = name + "\n";
@@ -45,6 +52,9 @@ namespace TextRPG
             return full;
         }
 
+        /// <summary>
+        /// Return a string list of all NPCs in the area
+        /// </summary>
         public string getNpcDescriptionList()
         {
             string npcDesc = "Npcs: ";
@@ -76,12 +86,21 @@ namespace TextRPG
             return npcDesc + "\n" + enemiesDesc + "\n";
         }
 
+        /// <summary>
+        /// Add a connection to an area by id
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="connectingAreaId"></param>
         public void addConnection(string connection, int connectingAreaId)
         {
             AreaConnection ac = getConnectionFromString(connection);
             connections.Add(ac, connectingAreaId);
         }
 
+        /// <summary>
+        /// Add an NPC to the area
+        /// </summary>
+        /// <param name="id"></param>
         public bool addNpc(int id)
         {
             Character c = GameManager.getNpc(id);
@@ -97,11 +116,19 @@ namespace TextRPG
             return true;
         }
 
+        /// <summary>
+        /// Add an item to the area by id
+        /// </summary>
+        /// <param name="id"></param>
         public bool addItem(int id)
         {
             return inventory.addItemToInventory(id);
         }
 
+        /// <summary>
+        /// Get an enemy in the area by name
+        /// </summary>
+        /// <param name="name"></param>
         public Enemy getEnemyFromName(string name)
         {
             foreach (Character c in npcs)
@@ -114,6 +141,10 @@ namespace TextRPG
             return null;
         }
 
+        /// <summary>
+        /// Returns the id of the area connecnted to this area througha  given connection as a string
+        /// </summary>
+        /// <param name="connection"></param>
         public int getAreaIdAt(string connection)
         {
             AreaConnection con = getConnectionFromString(connection);
@@ -124,6 +155,10 @@ namespace TextRPG
             return -1;
         }
 
+        /// <summary>
+        /// Returns the id of the area connecnted to this area througha  given connection as an AreaConnection 
+        /// </summary>
+        /// <param name="connection"></param>
         public int getAreaIdAt(AreaConnection connection)
         {
             if (connections.ContainsKey(connection))
@@ -133,16 +168,28 @@ namespace TextRPG
             return -1;
         }
 
+        /// <summary>
+        /// Return item in area by name
+        /// </summary>
+        /// <param name="itemName"></param>
         public Item getItemFromName(string itemName)
         {
             return inventory.getItemFromName(itemName);
         }
 
+        /// <summary>
+        /// Remove item from inventory
+        /// </summary>
+        /// <param name="i"></param>
         public void removeItem(Item i)
         {
             inventory.removeItem(i);
         }
 
+        /// <summary>
+        /// Return AreaConnection corresponding to a string
+        /// </summary>
+        /// <param name="s"></param>
         private AreaConnection getConnectionFromString(string s)
         {
             switch(s)
@@ -159,6 +206,10 @@ namespace TextRPG
             }
         }
 
+        /// <summary>
+        /// Return the opposing area connection to a connection by string
+        /// </summary>
+        /// <param name="s"></param>
         public static string getOpposingConnectionString(string s)
         {
             switch (s)

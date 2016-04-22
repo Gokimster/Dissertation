@@ -15,6 +15,9 @@ namespace TextRPG
         {
         }
 
+        /// <summary>
+        /// Initialise the item manager
+        /// </summary>
         public void init()
         {
             loadItems();
