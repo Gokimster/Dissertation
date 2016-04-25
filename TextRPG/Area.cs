@@ -110,7 +110,7 @@ namespace TextRPG
             }
             else
             {
-                Console.WriteLine("Couldn't add Enemy to room");
+                Console.WriteLine("Couldn't add Npc to room");
                 return false;
             }
             return true;

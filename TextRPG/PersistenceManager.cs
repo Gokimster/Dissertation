@@ -6,7 +6,7 @@ namespace TextRPG
     public static class PersistenceManager
     {
         /// <summary>
-        /// creates a new document, initialize it as an xml adn save it 
+        /// Creates a new document, initialize it as an xml and save it 
         /// with a given name
         /// </summary>
         /// <param name="name"></param>

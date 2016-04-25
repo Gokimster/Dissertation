@@ -78,7 +78,7 @@ namespace TextRPG
         }
 
         /// <summary>
-        /// Add an Character to XML
+        /// Add a Character to XML
         /// </summary>
         /// <param name="c"></param>
         private void addNpcToXML(int id, Character c)

@@ -547,7 +547,7 @@
         </member>
         <member name="M:TextRPG.NpcManager.addNpcToXML(System.Int32,TextRPG.Character)">
             <summary>
-            Add an Character to XML
+            Add a Character to XML
             </summary>
             <param name="c"></param>
         </member>
@@ -616,7 +616,7 @@
         </member>
         <member name="M:TextRPG.PersistenceManager.createXMLDoc(System.String,System.String)">
             <summary>
-            creates a new document, initialize it as an xml adn save it 
+            Creates a new document, initialize it as an xml and save it 
             with a given name
             </summary>
             <param name="name"></param>
@@ -666,13 +666,11 @@
             <summary>
             Get the damage bonus provided by all equipped items
             </summary>
-            <param name="name"></param>
         </member>
         <member name="M:TextRPG.PlayerInventory.getListOfItems">
             <summary>
             Get a list of all items in inventory
             </summary>
-            <param name="name"></param>
         </member>
         <member name="M:TextRPG.Program.Main">
             <summary>

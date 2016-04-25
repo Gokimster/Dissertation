@@ -29,7 +29,6 @@ namespace TextRPG
             {
                 return false;
             }
-            
         }
 
         /// <summary>

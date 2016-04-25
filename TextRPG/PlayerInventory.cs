@@ -66,7 +66,6 @@ namespace TextRPG
         /// <summary>
         /// Get the damage bonus provided by all equipped items
         /// </summary>
-        /// <param name="name"></param>
         public float getEquippedDmgBonus()
         {
             float bonus = 0;
@@ -80,7 +79,6 @@ namespace TextRPG
         /// <summary>
         /// Get a list of all items in inventory
         /// </summary>
-        /// <param name="name"></param>
         public string getListOfItems()
         {
             string list = "";

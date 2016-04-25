@@ -1,146 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="TextRPG.Area" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="11.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAIAAAAKAEAAIEKgCAAAAAAAAUAAECIgAAAAAABAA=</HashCode>
       <FileName>Area.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.AreaManager" Collapsed="true">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAIAAgAQCCAIAAAAAACAIAAAIAAAAIEQEAAAIADhEA=</HashCode>
       <FileName>AreaManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Character" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="8.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Character.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.CombatCharacter" Collapsed="true">
-    <Position X="1.75" Y="1.75" Width="1.5" />
+    <Position X="8.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIIAIAAAIAgAAAAAAAgABQAgAAAAABEAAAAAAA=</HashCode>
       <FileName>CombatCharacter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.CombatManager" Collapsed="true">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="10.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAQCAQAAABIQAAgAAAADAAAgEQAEAAAAAACI=</HashCode>
       <FileName>CombatManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Enemy" Collapsed="true">
-    <Position X="0.5" Y="3.25" Width="1.5" />
+    <Position X="7.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.EquipItem" Collapsed="true">
-    <Position X="3.5" Y="5.75" Width="1.5" />
+    <Position X="7.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>EquipItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.GameManager" Collapsed="true">
-    <Position X="11.25" Y="0.5" Width="1.5" />
+    <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAQAAAQAAAABAEgCBAAAAAAAAQAAQAAAQAAAA=</HashCode>
       <FileName>GameManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Grammar" Collapsed="true">
-    <Position X="6" Y="1.5" Width="1.5" />
+    <Position X="6.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABAIAA=</HashCode>
       <FileName>Grammar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.GUI" Collapsed="true">
-    <Position X="7.75" Y="1.5" Width="1.5" />
+    <Position X="10.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIABAACAAAgAAQACAAAACCIAAABAAQAAAAIAAAAA=</HashCode>
       <FileName>GUI.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Inventory" Collapsed="true">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+    <Position X="9.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACQAAAAAGCEAAAEAAiAAAAACAAIAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Item" Collapsed="true">
-    <Position X="3.5" Y="4.5" Width="1.5" />
+    <Position X="7.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAKAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.ItemManager" Collapsed="true">
-    <Position X="9.5" Y="1.5" Width="1.5" />
+    <Position X="10.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAQCCAAAAAAAiAAEBAAAAAACIAQAAAAAAAAAA=</HashCode>
       <FileName>ItemManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TextRPG.LuaManager" Collapsed="true">
-    <Position X="11.25" Y="1.5" Width="1.5" />
+  <Class Name="TextRPG.LuaManager">
+    <Position X="4.25" Y="0.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>QCAAAAAAAAABQAAAEAAAAEAAABAAEAAAAAAAABCAAAA=</HashCode>
       <FileName>LuaManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.NpcManager" Collapsed="true">
-    <Position X="6" Y="2.5" Width="1.5" />
+    <Position X="8.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAABAAAACICAACAhAgAAgAAACAAAgAIQQAAAAAAAAEA=</HashCode>
       <FileName>NpcManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.PersistenceManager" Collapsed="true">
-    <Position X="7.75" Y="2.5" Width="1.5" />
+    <Position X="8.25" Y="2.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PersistenceManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Player" Collapsed="true">
-    <Position X="2.75" Y="3.25" Width="1.5" />
+    <Position X="9.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAQAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.PlayerInventory" Collapsed="true">
-    <Position X="0.5" Y="5.75" Width="1.5" />
+    <Position X="9.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQBAAAAAACAAAAAAAAAAAAAAAAAIAAAQQAQAAAQAAAA=</HashCode>
       <FileName>PlayerInventory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Program" Collapsed="true">
-    <Position X="9.5" Y="2.5" Width="1.5" />
+    <Position X="12" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Properties.Resources" Collapsed="true">
-    <Position X="11.25" Y="2.5" Width="1.5" />
+    <Position X="12" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="TextRPG.Properties.Settings" Collapsed="true">
-    <Position X="6" Y="3.5" Width="1.5" />
+    <Position X="12" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAQAAAAAQIAAACACBAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
